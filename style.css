@@ -13,27 +13,15 @@ body {
     position: absolute;
 }
 
-.banner-text ul {
-    height: 50px;
-    float: right;
-}
-
-.banner-text ul li {
-    display: inline-block;
-    padding: 40px 15px;
-    color: #fff;
-    font-size: 20px;
-}
-
 .banner-text h2 {
     text-align: center;
     color: #fff;
     font-size: 50px;
-    margin-top: 20%;
+    margin-top: 40vh;
 }
 
 .animation-area {
-    background: linear-gradient(to left, #56ab2f, #a8e063);
+    background: linear-gradient(to left, #F3904F, #3B4371);
     width: 100%;
     height: 100vh;
 }

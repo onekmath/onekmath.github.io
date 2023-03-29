@@ -1,17 +1,23 @@
-body {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    min-width: 100%;
     background: radial-gradient(#9bdfff, #009be4);
+    overflow: hidden;
 }
 
 .infinite {
     bottom: 0;
     position: relative;
-    width: 500px;
+    width: 50%;
     height: 100vh;
     background: #525252;
     transform-style: preserve-3d;

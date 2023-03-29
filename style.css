@@ -4,14 +4,17 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow: hidden;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     min-width: 100%;
-    background: radial-gradient(#4cc2e6, #1474a0);
-    overflow: hidden;
+    background: radial-gradient(#FCF5CC, #FAD694, #9FAAA9);
 }
 
 
@@ -22,7 +25,8 @@ body {
     background: #525252;
     transform-style: preserve-3d;
     transform-origin: bottom;
-    transform: perspective(300px) rotateX(25deg);
+    transform: perspective(300px) rotateX(20deg);
+    z-index: 1;
 }
 
 
@@ -44,6 +48,14 @@ body {
         background-position-y: -20vh;
     }
     100%{
-        background-position-y: -0px;
+        background-position-y: 0px;
     }
+}
+
+.grass {
+    position: absolute;
+    width: 100%;
+    height: 41vh;
+    bottom: 0;
+    background: linear-gradient(0deg, green 0%, white);
 }

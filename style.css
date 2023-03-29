@@ -10,7 +10,7 @@ body {
     align-items: center;
     min-height: 100vh;
     min-width: 100%;
-    background: radial-gradient(#9bdfff, #009be4);
+    background: radial-gradient(#e496ee, #5db7e0);
     overflow: hidden;
 }
 
@@ -30,7 +30,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
-    width: 10px;
+    width: 5%;
     height: 100%;
     background: linear-gradient(0deg, #fff 0%, #fff 70%, #525252 70%, #525252 100%);
     background-size: auto 120px;

@@ -24,6 +24,7 @@ body {
     transform: perspective(300px) rotateX(50deg);
 }
 
+/*
 .infinite:before {
     content: '';
     position: absolute;
@@ -45,3 +46,4 @@ body {
         background-position-y: -0px;
     }
 }
+*/

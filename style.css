@@ -1,3 +1,7 @@
+:root {
+    --view-heigh: 100vh;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,19 +22,19 @@ body {
 }
 
 
-.infinite {
+.road-mark {
     position: relative;
-    width: 100%;
+    width: 65%;
     height: 100vh;
     background: #525252;
     transform-style: preserve-3d;
     transform-origin: bottom;
-    transform: perspective(300px) rotateX(20deg);
+    transform: perspective(200px) rotateX(14deg);
     z-index: 1;
 }
 
 
-.infinite:before {
+.road-mark:before {
     content: '';
     position: absolute;
     left: 50%;
@@ -53,9 +57,10 @@ body {
 }
 
 .grass {
+    background: url('img/grass.png');
+    background-size: 100% 100%;
     position: absolute;
     width: 100%;
-    height: 41vh;
+    height: 54%;
     bottom: 0;
-    background: linear-gradient(0deg, green 0%, white);
 }

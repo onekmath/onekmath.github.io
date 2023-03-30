@@ -1,5 +1,6 @@
 :root {
-    --time: 1s;
+    --time-car: 1s;
+    --time-banner: 4s;
 }
 
 * {
@@ -43,7 +44,7 @@ body {
     height: 100%;
     background: linear-gradient(0deg, #fff 0%, #fff 70%, #525252 70%, #525252 100%);
     background-size: auto 10vh;
-    animation: animate var(--time) linear infinite;
+    animation: animate var(--time-car) linear infinite;
 }
 
 @keyframes animate {
@@ -76,4 +77,34 @@ body {
     transform-style: preserve-3d;
     transform-origin: top;
     transform: perspective(10vh) rotateX(30deg);
+}
+
+
+.banner {
+    padding: 1.5% 1%;
+    text-align: center;
+    font-size: 0.5%;
+    line-height: 1;
+    color: rgb(211, 32, 76);
+    font-family: 'Carter One', serif;
+}
+
+.banner {
+    position: absolute;
+    background: url('img/banner.png');
+    background-size: 100% 100%;
+    width: 10%;
+    height: 10vh;
+    left: 30%;
+    top: 52vh;
+    animation: banner-scale var(--time-banner) ease-in infinite;
+}
+
+@keyframes banner-scale {
+    0% {
+        scale: 0.1;
+    }
+    100% {
+        scale: 20;
+    }
 }

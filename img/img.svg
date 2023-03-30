@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="7559.0552"
+   height="7559.0552"
+   viewBox="0 0 2000 2000"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="mountain.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09, custom)"
+   sodipodi:docname="img.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.37861251"
+     inkscape:cx="1189.8709"
+     inkscape:cy="854.43557"
+     inkscape:window-width="1846"
+     inkscape:window-height="1016"
+     inkscape:window-x="74"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1430">
+      <stop
+         style="stop-color:#05ca31;stop-opacity:1;"
+         offset="0"
+         id="stop1426" />
+      <stop
+         style="stop-color:#05ca31;stop-opacity:0;"
+         offset="1"
+         id="stop1428" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1276">
+      <stop
+         style="stop-color:#d63384;stop-opacity:1;"
+         offset="0"
+         id="stop1272" />
+      <stop
+         style="stop-color:#d6c133;stop-opacity:0.49803922;"
+         offset="0.45525673"
+         id="stop1334" />
+      <stop
+         style="stop-color:#d67433;stop-opacity:0.24705882;"
+         offset="0.74481159"
+         id="stop1336" />
+      <stop
+         style="stop-color:#ea331f;stop-opacity:0.12156864;"
+         offset="0.99989998"
+         id="stop1338" />
+      <stop
+         style="stop-color:#fe4d0b;stop-opacity:0;"
+         offset="1"
+         id="stop1274" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1276"
+       id="linearGradient1278"
+       x1="145.61858"
+       y1="92.737259"
+       x2="64.445335"
+       y2="207.32481"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-18.967083,-13.810551)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1430"
+       id="linearGradient1432"
+       x1="236.50134"
+       y1="426.8132"
+       x2="279.08319"
+       y2="-28.293182"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1276"
+       id="linearGradient4136"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1,0,0,1,560.31175,-13.238968)"
+       x1="145.61858"
+       y1="92.737259"
+       x2="64.445335"
+       y2="207.32481" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:url(#linearGradient1278);fill-opacity:1;stroke-width:0"
+       d="M 1.4786444,123.30514 29.466752,111.3279 66.791345,85.923228 91.53797,89.064448 c 0,0 9.01768,-15.292993 10.63533,-15.292993 1.61765,0 22.76606,2.382385 22.76606,2.382385 l 2.59847,33.90872 25.13398,-6.27288 8.04026,10.5752 16.66471,-3.39122 8.59497,2.71229 6.78439,10.5896 z"
+       id="path1270"
+       inkscape:export-filename="grass.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:url(#linearGradient4136);fill-opacity:1;stroke-width:0"
+       d="M 539.86603,123.87673 511.87792,111.8995 474.55333,86.494812 449.8067,89.636032 c 0,0 -9.01768,-15.292993 -10.63533,-15.292993 -1.61765,0 -22.76606,2.382385 -22.76606,2.382385 l -2.59847,33.908736 -25.13398,-6.27288 -8.04026,10.57519 -16.66471,-3.39121 -8.59497,2.71228 -6.78439,10.5896 z"
+       id="path1270-5"
+       inkscape:export-filename="mountain.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:url(#linearGradient1432);stroke-width:0;fill-opacity:1"
+       id="rect1424"
+       width="538.52771"
+       height="248.43262"
+       x="0.84426957"
+       y="123.2707" />
+  </g>
+</svg>

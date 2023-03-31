@@ -19,7 +19,31 @@ body {
     align-items: center;
     min-height: 100vh;
     min-width: 100%;
-    background: radial-gradient(#FCF5CC, #FAD694, #9FAAA9);
+    background-image: radial-gradient(#FCF5CC, #FAD694, #9FAAA9);
+}
+
+.background {
+    position: absolute;
+    min-height: 100vh;
+    min-width: 100%;
+    animation: change-color 12s linear infinite;
+    background-image: radial-gradient(#0f3ed8, #330f77, #000000);
+}
+
+@keyframes change-color {
+    0% {
+        opacity: 0;
+        
+    }
+    45% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .road-mark {

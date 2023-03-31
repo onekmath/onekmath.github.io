@@ -28,9 +28,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="0.18930626"
-     inkscape:cx="1899.0392"
-     inkscape:cy="520.32088"
+     inkscape:zoom="0.26771948"
+     inkscape:cx="1966.6107"
+     inkscape:cy="3501.7997"
      inkscape:window-width="1846"
      inkscape:window-height="1016"
      inkscape:window-x="74"
@@ -292,5 +292,54 @@
        x="743.60498"
        y="406.96945"
        transform="rotate(-7.5999801)" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect10159-3"
+       width="12.805007"
+       height="44.680161"
+       x="-454.7186"
+       y="957.78369"
+       inkscape:export-filename="../e522d802/banner2.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect10159-2-6"
+       width="12.805007"
+       height="27.59432"
+       x="-361.20102"
+       y="956.30292"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect10253-5"
+       width="163.26172"
+       height="9.462822"
+       x="-595.47339"
+       y="886.3476"
+       transform="matrix(-0.97759973,-0.21047273,-0.08241008,0.9965985,0,0)"
+       inkscape:export-filename="../e522d802/banner2.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#4f1319;fill-opacity:1;stroke-width:0"
+       id="rect9945-3"
+       width="18.776875"
+       height="429.26093"
+       x="-526.09448"
+       y="840.89117"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#083a42;fill-opacity:1;stroke-width:0"
+       id="rect9999-5"
+       width="301.1066"
+       height="276.29449"
+       x="-553.33374"
+       y="682.76593"
+       inkscape:export-filename="../c1baab72/banner.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="scale(-1,1)" />
   </g>
 </svg>

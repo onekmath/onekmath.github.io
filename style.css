@@ -140,7 +140,7 @@ body {
     100%{
         opacity: 2;
         scale: 2;
-        transform: translateY(10vh) translateX(100%);
+        transform: translateY(20vh) translateX(150%);
     }
 }
 
@@ -167,3 +167,41 @@ body {
     animation-delay: 2s;
 }
 
+.sun-plate {
+    position: relative;
+    height: 50vh;
+    width: auto;
+    top: -17vh;
+    left: 20%;
+    transform-origin: bottom;
+    animation: spin 12s linear infinite;
+}
+
+.sun {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #d64e0f;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #e28a24;
+}
+
+@keyframes spin {
+    0% {
+        opacity: 1;
+        transform: rotateZ(0deg);
+    }
+    25% {
+        opacity: 0;
+        transform: rotateZ(-90deg);
+    }
+    75% {
+        opacity: 0;
+        transform: rotateZ(-270deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateZ(-360deg);
+    }
+}

@@ -96,7 +96,7 @@ body {
         scale: 0.1;
     }
     100% {
-        scale: 20;
+        scale: 8;
     }
 }
 
@@ -121,3 +121,48 @@ body {
     overflow: clip;
     word-wrap: break-word;
 }
+
+.forest {
+    position: absolute;
+    width: 30%;
+    height: 20vh;
+    left: 70%;
+    top: 55%;
+    /* animation: banner-scale var(--time-banner) ease-in infinite; */
+}
+
+@keyframes move-tree {
+    0%{
+        
+    }
+    100%{
+
+    }
+}
+
+.tree {
+    position: absolute;
+    width: 30%;
+    height: 10vh;
+    background: url('img/tree.png');
+    background-size: 100% 100%;
+}
+
+.tree:nth-child(2) {
+    top: 30%;
+    left: 40%;
+    scale: 1.2;
+}
+
+.tree:nth-child(3) {
+    top: 60%;
+    left: 70%;
+    scale: 1.3;
+}
+
+.tree:nth-child(4) {
+    top: 80%;
+    left: 55%;
+    scale: 1.5;
+}
+

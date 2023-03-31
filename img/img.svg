@@ -28,15 +28,15 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="0.37861251"
-     inkscape:cx="1189.8709"
-     inkscape:cy="854.43557"
+     inkscape:zoom="0.18930626"
+     inkscape:cx="1899.0392"
+     inkscape:cy="520.32088"
      inkscape:window-width="1846"
      inkscape:window-height="1016"
      inkscape:window-x="74"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer2" />
   <defs
      id="defs2">
     <linearGradient
@@ -106,7 +106,7 @@
        y2="207.32481" />
   </defs>
   <g
-     inkscape:label="Layer 1"
+     inkscape:label="grass"
      inkscape:groupmode="layer"
      id="layer1">
     <path
@@ -130,5 +130,167 @@
        height="248.43262"
        x="0.84426957"
        y="123.2707" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="motobike">
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0"
+       id="rect5065"
+       width="28.941622"
+       height="10.161602"
+       x="-115.83792"
+       y="485.53394"
+       transform="matrix(0.97749546,-0.21095644,0.30259602,0.95311891,0,0)"
+       inkscape:export-filename="../f64c6916/motobilke.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0"
+       id="rect5065-6"
+       width="30.630457"
+       height="10.114407"
+       x="357.073"
+       y="448.5582"
+       transform="matrix(0.99336886,0.11497093,-0.19755678,0.98029145,0,0)" />
+    <path
+       style="fill:#094bac;fill-opacity:1;stroke-width:0"
+       d="m 101.98011,463.50367 c 0,0 17.60421,-10.41714 25.71417,-14.29812 11.38228,-5.44694 15.02348,-12.09499 34.18597,-12.37439 21.15805,-0.30849 37.85174,15.5038 37.85174,15.5038 l 22.38405,12.20285 41.56536,11.45834 -2.6712,22.37216 -47.13035,-3.36468 -18.28288,13.51631 c 0,0 -21.54657,9.10496 -33.63993,9.54081 -11.50529,0.41466 -37.28041,-11.75478 -37.28041,-11.75478 L 104.4687,492.2446 63.772588,497.4727 60.927921,476.84826 Z"
+       id="path4473"
+       sodipodi:nodetypes="ccsccccccsccccc" />
+    <rect
+       style="fill:#f1f1f1;fill-opacity:1;stroke-width:0"
+       id="rect5200"
+       width="31.433287"
+       height="24.14114"
+       x="267.51468"
+       y="390.37589" />
+    <rect
+       style="fill:#106e7d;fill-opacity:1;stroke-width:0"
+       id="rect6605"
+       width="227.95467"
+       height="65.306297"
+       x="379.76636"
+       y="473.69937" />
+    <path
+       id="path6330"
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       d="m 421.98386,476.63598 c -14.69349,-3e-5 -30.61123,14.5534 -31.05436,28.65666 -0.51488,16.38673 16.70092,30.83193 31.39461,30.8319 14.69369,4e-5 30.78659,-15.82392 30.78643,-30.13134 -1.3e-4,-14.30722 -16.43319,-29.35725 -31.12668,-29.35722 z m 0.2307,6.93718 c 12.92099,4e-5 23.3955,9.97966 23.39547,22.29012 2e-5,12.31046 -10.47448,22.29007 -23.39547,22.29011 -12.92099,-4e-5 -23.39549,-9.97965 -23.39547,-22.29011 -3e-5,-12.31046 10.47448,-22.29008 23.39547,-22.29012 z"
+       sodipodi:nodetypes="ssssssssss" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect6543"
+       width="11.560384"
+       height="19.741144"
+       x="416.28662"
+       y="482.02747" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect6545"
+       width="21.02121"
+       height="12.121765"
+       x="397.68616"
+       y="500.32263" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect6547"
+       width="12.781936"
+       height="16.401009"
+       x="415.67874"
+       y="512.61102" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect6549"
+       width="19.484344"
+       height="11.512942"
+       x="427.03259"
+       y="501.18311" />
+    <ellipse
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="path6603"
+       cx="421.47623"
+       cy="505.61273"
+       rx="13.142841"
+       ry="11.950473" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke-width:0"
+       d="m 163.15472,447.81157 -37.85011,16.10623 -5.22636,26.56185 41.13254,19.00363 42.26435,-19.65915 -7.01007,-25.62967 z"
+       id="path6713"
+       sodipodi:nodetypes="ccccccc" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0"
+       id="rect8489"
+       width="46.230988"
+       height="30.743113"
+       x="-13.353089"
+       y="476.0358"
+       transform="matrix(0.97389593,-0.22699496,0.15219019,0.98835123,0,0)"
+       inkscape:transform-center-x="-2.222165"
+       inkscape:transform-center-y="1.5200985" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke-width:0"
+       id="rect8491"
+       width="36.196449"
+       height="32.431969"
+       x="259.63632"
+       y="422.78094"
+       transform="matrix(0.98726139,0.15910669,-0.08904378,0.99602771,0,0)" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect10159"
+       width="12.805007"
+       height="36.217903"
+       x="845.26898"
+       y="262.63062"
+       inkscape:export-filename="../779f728a/banner.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect10159-2"
+       width="12.805007"
+       height="27.59432"
+       x="937.5788"
+       y="259.2608" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect10159-9"
+       width="12.805007"
+       height="20.265358"
+       x="1036.6721"
+       y="258.707" />
+    <rect
+       style="fill:#083a42;fill-opacity:1;stroke-width:0"
+       id="rect9999"
+       width="339.79123"
+       height="126.01067"
+       x="777.07886"
+       y="137.62589"
+       inkscape:export-filename="../c1baab72/banner.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#721c24;fill-opacity:1;stroke-width:0"
+       id="rect9945"
+       width="18.776875"
+       height="340.59293"
+       x="773.89313"
+       y="137.2758" />
+    <rect
+       style="fill:#abdee5;fill-opacity:1;stroke-width:0"
+       id="rect10157"
+       width="303.46967"
+       height="99.115005"
+       x="1064.7366"
+       y="574.96716" />
+    <rect
+       style="fill:#5b2d07;fill-opacity:1;stroke-width:0"
+       id="rect10253"
+       width="259.81525"
+       height="9.5142107"
+       x="743.60498"
+       y="406.96945"
+       transform="rotate(-7.5999801)" />
   </g>
 </svg>

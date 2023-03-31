@@ -1,3 +1,3 @@
-const banner = document.getElementsByClassName('banner')[0];
+const board = document.getElementsByClassName('board')[0];
 
-banner.textContent = "Welcome to my World";
+board.textContent = "Welcome to my World";

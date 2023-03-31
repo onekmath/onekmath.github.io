@@ -79,24 +79,15 @@ body {
     transform: perspective(10vh) rotateX(30deg);
 }
 
-
 .banner {
-    padding: 0.8vh 1%;
-    text-align: center;
-    font-size: 0.5%;
-    line-height: 1;
-    color: rgb(211, 32, 76);
-    font-family: 'Carter One', serif;
-}
-
-.banner {
-    position: absolute;
+    position: relative;
     background: url('img/banner.png');
     background-size: 100% 100%;
     width: 10%;
     height: 10vh;
-    left: 30%;
-    top: 52vh;
+    left: -15%;
+    top: 8vh;
+  
     animation: banner-scale var(--time-banner) ease-in infinite;
 }
 
@@ -107,4 +98,26 @@ body {
     100% {
         scale: 20;
     }
+}
+
+.board {
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    width: 91%;
+    height: 3vh;
+    background: orange;
+}
+
+.board { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1vh;
+    font-size: 0.5%;
+    line-height: 1;
+    color: rgb(211, 32, 76);
+    font-family: 'Carter One', serif;
+    overflow: clip;
+    word-wrap: break-word;
 }

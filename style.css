@@ -211,7 +211,48 @@ body {
     box-shadow: 0 0 50px #e28a24;
 }
 
+.moon-plate {
+    position: relative;
+    height: 50vh;
+    width: auto;
+    top: -17vh;
+    left: 20%;
+    transform-origin: bottom;
+    animation: spin-moon 12s linear infinite;
+    animation-delay: 6s;
+    opacity: 0;
+}
+
+.moon {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #f3e636;
+}
+
 @keyframes spin {
+    0% {
+        opacity: 1;
+        transform: rotateZ(0deg);
+    }
+    25% {
+        opacity: 0;
+        transform: rotateZ(-90deg);
+    }
+    75% {
+        opacity: 0;
+        transform: rotateZ(-270deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateZ(-360deg);
+    }
+}
+
+@keyframes spin-moon {
     0% {
         opacity: 1;
         transform: rotateZ(0deg);

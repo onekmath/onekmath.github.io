@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thien Toan</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - onekmath</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-  <div class="background"></div>
-  <div class="sun-plate">
-    <div class="sun"></div>
-  </div>
-  <div class="moon-plate">
-    <div class="moon"></div>
-  </div>
-  <div class="road-mark"></div>
-  <div class="grass"></div>
-  <div class="vehicle"></div>
-  <div class="banner">
-    <div class="board">Hello</div>
-  </div>
-  <div class="forest">
-    <div class="tree"></div>
-    <div class="tree"></div>
-    <div class="tree"></div>
-  </div>
 
-  <div class="input-box">
-    <input id="textbox" type="text" placeholder="Bạn tên gì?" required>
-    <input id="button" type="submit" value="OK">
-  </div>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="#"><img src="img/logo_me_green.png" alt="Site Name" /></a>
+                <a href="#"><h1>ONEKMATH</h1></a>
+            </div>
+            <ul class="links">
+                <li><a href="">Home</a></li>
+                <li><a href="">Web</a></li>
+                <li><a href="">Game</a></li>
+                <li><a href="">App</a></li>
+                <li><a href="">Music</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Web</a></li>
+            <li><a href="">Game</a></li>
+            <li><a href="">App</a></li>
+            <li><a href="">Music</a></li>
+            <li><a href="">About</a></li>
+        </div>
+    </header>
 
+    <video autoplay muted loop id="bgVideo">
+        <source src="vid/bg_vid.mp4" type="video/mp4">
+    </video>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

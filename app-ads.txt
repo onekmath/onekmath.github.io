@@ -1,0 +1,2 @@
+# app-ads.txt file for onekmath
+google.com, pub-3541548501544530, DIRECT, f08c47fec0942fa0

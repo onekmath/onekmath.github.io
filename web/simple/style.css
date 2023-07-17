@@ -1,0 +1,35 @@
+body {
+    font-family: sans-serif;
+    background-color: #ffffff;
+  }
+  
+  h1 {
+    font-size: 2em;
+    text-align: center;
+  }
+  
+  nav {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+  }
+  
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  section {
+    padding: 20px;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+  }
+  

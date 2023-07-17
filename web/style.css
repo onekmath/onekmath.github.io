@@ -109,3 +109,32 @@ header {
 }
 
 /* End header */
+
+/* List View */
+.listview {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .listview-item {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .listview-item-title {
+    font-size: 1.2em;
+  }
+  
+  .listview-item-description {
+    font-size: 0.9em;
+  }
+  
+  .listview-item-link {
+    text-decoration: none;
+    color: #000;
+  }
+  
+
+  /* End Listview*/

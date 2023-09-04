@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Effect</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .ring1 {
+            display: inline-block;
+            border: 16px solid #8BE8E5;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border-top: 16px solid transparent;
+            animation: spin 2s linear infinite;
+        }
+
+        .ring2 {
+            display: inline-block;
+            border: 16px solid #8BE8E5;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border-top: 16px solid #A084E8;
+            animation: spin 2s linear infinite;
+        }
+
+        .ring3 {
+            display: inline-block;
+            border: 16px solid;
+            border-color: #8BE8E5 #A084E8;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        .ring4 {
+            display: inline-block;
+            border: 16px solid;
+            border-color: #6F61C0 #8BE8E5 #A084E8 #D5FFE4;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .fan1 {
+            display: inline-block;
+            border: 49px solid #8BE8E5;
+            border-color: #8BE8E5 transparent #8BE8E5 transparent;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: spin 2s ease infinite;
+
+        }
+
+        .fan2 {
+            display: inline-block;
+            border: 49px solid #8BE8E5;
+            border-color: #8BE8E5 #A084E8 #8BE8E5 #8BE8E5;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: spin 2s ease infinite;
+
+        }
+
+        .fan3 {
+            display: inline-block;
+            border: 49px solid #8BE8E5;
+            border-color: #8BE8E5 #A084E8 #8BE8E5 #A084E8;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: spin 2s ease infinite;
+
+        }
+
+        .fan4 {
+            display: inline-block;
+            border: 49px solid #8BE8E5;
+            border-color: #D5FFE4 #A084E8 #8BE8E5 #6F61C0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: spin 2s ease infinite;
+
+        }
+
+        .clock {
+            display: inline-block;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .clock div {
+            display: block;
+            position: absolute;
+            left: 46px;
+            width: 8px;
+            height: 25px;
+            border-radius: 20%;
+            background-color: #8BE8E5;
+            transform-origin: 4px 50px;
+            animation: opa 1s linear infinite;
+        }
+
+        .clock div:nth-child(1) {
+            transform: rotate(30deg);
+            animation-delay: 0.08s;
+        }
+
+        .clock div:nth-child(2) {
+            transform: rotate(60deg);
+            animation-delay: 0.16s;
+        }
+
+        .clock div:nth-child(3) {
+            transform: rotate(90deg);
+            animation-delay: 0.24s;
+        }
+
+        .clock div:nth-child(4) {
+            transform: rotate(120deg);
+            animation-delay: 0.32s;
+        }
+
+        .clock div:nth-child(5) {
+            transform: rotate(150deg);
+            animation-delay: 0.4s;
+        }
+
+        .clock div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: 0.48s;
+        }
+
+        .clock div:nth-child(7) {
+            transform: rotate(210deg);
+            animation-delay: 0.56s;
+        }
+
+        .clock div:nth-child(8) {
+            transform: rotate(240deg);
+            animation-delay: 0.64s;
+        }
+
+        .clock div:nth-child(9) {
+            transform: rotate(270deg);
+            animation-delay: 0.72s;
+        }
+
+        .clock div:nth-child(10) {
+            transform: rotate(300deg);
+            animation-delay: 0.8s;
+        }
+
+        .clock div:nth-child(11) {
+            transform: rotate(330deg);
+            animation-delay: 0.88s;
+        }
+
+        .clock div:nth-child(12) {
+            transform: rotate(360deg);
+            animation-delay: 0.96s;
+        }
+
+        @keyframes opa {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .clock2 {
+            display: inline-block;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .clock2 div {
+            display: block;
+            position: absolute;
+            left: 46px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #8BE8E5;
+            transform-origin: 4px 50px;
+            animation: opa 1s linear infinite;
+        }
+
+        .clock2 div:nth-child(1) {
+            transform: rotate(30deg);
+            animation-delay: 0.08s;
+        }
+
+        .clock2 div:nth-child(2) {
+            transform: rotate(60deg);
+            animation-delay: 0.16s;
+        }
+
+        .clock2 div:nth-child(3) {
+            transform: rotate(90deg);
+            animation-delay: 0.24s;
+        }
+
+        .clock2 div:nth-child(4) {
+            transform: rotate(120deg);
+            animation-delay: 0.32s;
+        }
+
+        .clock2 div:nth-child(5) {
+            transform: rotate(150deg);
+            animation-delay: 0.4s;
+        }
+
+        .clock2 div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: 0.48s;
+        }
+
+        .clock2 div:nth-child(7) {
+            transform: rotate(210deg);
+            animation-delay: 0.56s;
+        }
+
+        .clock2 div:nth-child(8) {
+            transform: rotate(240deg);
+            animation-delay: 0.64s;
+        }
+
+        .clock2 div:nth-child(9) {
+            transform: rotate(270deg);
+            animation-delay: 0.72s;
+        }
+
+        .clock2 div:nth-child(10) {
+            transform: rotate(300deg);
+            animation-delay: 0.8s;
+        }
+
+        .clock2 div:nth-child(11) {
+            transform: rotate(330deg);
+            animation-delay: 0.88s;
+        }
+
+        .clock2 div:nth-child(12) {
+            transform: rotate(360deg);
+            animation-delay: 0.96s;
+        }
+
+        .clock3 {
+            display: inline-block;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .clock3 div {
+            display: block;
+            position: absolute;
+            left: 46px;
+            width: 8px;
+            height: 100px;
+            border-radius: 20%;
+            background-color: #8BE8E5;
+            transform-origin: 4px 50px;
+            animation: opa2 1s linear infinite;
+        }
+
+        .clock3 div:nth-child(1) {
+            transform: rotate(30deg);
+            animation-delay: 0.08s;
+        }
+
+        .clock3 div:nth-child(2) {
+            transform: rotate(60deg);
+            animation-delay: 0.16s;
+        }
+
+        .clock3 div:nth-child(3) {
+            transform: rotate(90deg);
+            animation-delay: 0.24s;
+        }
+
+        .clock3 div:nth-child(4) {
+            transform: rotate(120deg);
+            animation-delay: 0.32s;
+        }
+
+        .clock3 div:nth-child(5) {
+            transform: rotate(150deg);
+            animation-delay: 0.4s;
+        }
+
+        .clock3 div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: 0.48s;
+        }
+
+        .clock3 div:nth-child(7) {
+            transform: rotate(210deg);
+            animation-delay: 0.56s;
+        }
+
+        .clock3 div:nth-child(8) {
+            transform: rotate(240deg);
+            animation-delay: 0.64s;
+        }
+
+        .clock3 div:nth-child(9) {
+            transform: rotate(270deg);
+            animation-delay: 0.72s;
+        }
+
+        .clock3 div:nth-child(10) {
+            transform: rotate(300deg);
+            animation-delay: 0.8s;
+        }
+
+        .clock3 div:nth-child(11) {
+            transform: rotate(330deg);
+            animation-delay: 0.88s;
+        }
+
+        .clock3 div:nth-child(12) {
+            transform: rotate(360deg);
+            animation-delay: 0.96s;
+        }
+
+        @keyframes opa2 {
+            0% {
+                opacity: 0;
+            }
+
+            80% {
+                opacity: 0.4;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes opa3 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .clock4 {
+            display: inline-block;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+        }
+
+        .clock4 div {
+            display: block;
+            position: absolute;
+            left: 46px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #8BE8E5;
+            transform-origin: 4px 50px;
+            animation: opa3 1s linear infinite;
+        }
+
+        .clock4 div:nth-child(13) {
+            height: 100px;
+            background-color: #6F61C0;
+            animation: spin 1s linear infinite;
+        }
+
+        .clock4 div:nth-child(1) {
+            transform: rotate(30deg);
+            animation-delay: 0.08s;
+        }
+
+        .clock4 div:nth-child(2) {
+            transform: rotate(60deg);
+            animation-delay: 0.16s;
+        }
+
+        .clock4 div:nth-child(3) {
+            transform: rotate(90deg);
+            animation-delay: 0.24s;
+        }
+
+        .clock4 div:nth-child(4) {
+            transform: rotate(120deg);
+            animation-delay: 0.32s;
+        }
+
+        .clock4 div:nth-child(5) {
+            transform: rotate(150deg);
+            animation-delay: 0.4s;
+        }
+
+        .clock4 div:nth-child(6) {
+            transform: rotate(180deg);
+            animation-delay: 0.48s;
+        }
+
+        .clock4 div:nth-child(7) {
+            transform: rotate(210deg);
+            animation-delay: 0.56s;
+        }
+
+        .clock4 div:nth-child(8) {
+            transform: rotate(240deg);
+            animation-delay: 0.64s;
+        }
+
+        .clock4 div:nth-child(9) {
+            transform: rotate(270deg);
+            animation-delay: 0.72s;
+        }
+
+        .clock4 div:nth-child(10) {
+            transform: rotate(300deg);
+            animation-delay: 0.8s;
+        }
+
+        .clock4 div:nth-child(11) {
+            transform: rotate(330deg);
+            animation-delay: 0.88s;
+        }
+
+        .clock4 div:nth-child(12) {
+            transform: rotate(360deg);
+            animation-delay: 0.96s;
+        }
+
+        .bar1 {
+            width: 400px;
+            height: 30px;
+            background-color: #6F61C0;
+            border-left: 0px solid #8BE8E5;
+            border-right: 400px solid #8BE8E5;
+            animation: border1 1s linear infinite;
+        }
+
+        @keyframes border1 {
+            0% {
+                border-left-width: 0px;
+                border-right-width: 400px;
+            }
+
+            10% {
+                border-left-width: 0px;
+                border-right-width: 350px;
+            }
+
+            90% {
+                border-left-width: 350px;
+                border-right-width: 0px;
+            }
+
+            100% {
+                border-left-width: 400px;
+                border-right-width: 0px;
+            }
+        }
+
+        .bar2 {
+            width: 400px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #8BE8E5;
+        }
+
+        .bar2 div {
+            background-color: #6F61C0;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            animation: move2 2s linear infinite;
+        }
+
+        @keyframes move2 {
+            0% {
+                transform: translateX(0px) scale(0.4);
+            }
+
+            25% {
+                transform: translateX(170px) scale(1);
+            }
+
+            50% {
+                transform: translateX(370px) scale(0.4);
+            }
+
+            75% {
+                transform: translateX(170px) scale(1);
+            }
+
+            100% {
+                transform: translateX(0px) scale(0.4);
+            }
+        }
+
+        .bar3 {
+            width: 400px;
+            height: 30px;
+            background-color: #8BE8E5;
+            border-left: 0px solid #6F61C0;
+            animation: border2 2s linear infinite;
+        }
+
+        @keyframes border2 {
+            0% {
+                border-left-width: 0px;
+            }
+
+            50% {
+                border-left-width: 400px;
+            }
+
+            100% {
+                border-left-width: 0px;
+            }
+        }
+
+        .bar4 {
+            width: 400px;
+            height: 30px;
+            background-color: #6F61C0;
+            border-left: 200px solid #D5FFE4;
+            border-right: 200px solid #8BE8E5;
+            animation: anim4 2s ease-in infinite;
+        }
+
+        @keyframes anim4 {
+            0% {
+                border-left-width: 200px;
+                border-right-width: 200px;
+            }
+
+            50% {
+                border-left-width: 0px;
+                border-right-width: 0px;
+            }
+
+            100% {
+                border-left-width: 200px;
+                border-right-width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ring</h1>
+    <div>
+        <span class="ring1"></span>
+        <span class="ring2"></span>
+        <span class="ring3"></span>
+        <span class="ring4"></span>
+    </div>
+    <hr>
+    <h1>Fan</h1>
+    <div>
+        <span class="fan1"></span>
+        <span class="fan2"></span>
+        <span class="fan3"></span>
+        <span class="fan4"></span>
+    </div>
+    <hr>
+    <h1>Clock</h1>
+    <div>
+        <span class="clock">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </span>
+        <span class="clock2">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </span>
+        <span class="clock3">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </span>
+        <span class="clock4">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </span>
+    </div>
+    <hr>
+    <h1>Bar</h1>
+    <div>
+        <div class="bar1">
+            <div></div>
+        </div>
+        <br>
+        <div class="bar2">
+            <div></div>
+        </div>
+        <br>
+        <div class="bar3"></div>
+        <br>
+        <div class="bar4"></div>
+    </div>
+
+</body>
+
+</html>

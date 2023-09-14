@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table of content</title>
+    <style>
+        * {
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            height: 600px;
+        }
+
+        #part1 {
+            background: url('https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTy073-QvA3SUOfMPyob72K7hdMpOxlvDmNsiLJwJGL2ydOGkjtzUiaoNMKAq8a1_s09VXU0dYzi6j8vD0');
+            background-size: 100% 100%;
+        }
+
+        #part2 {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/d/d7/Qu%E1%BA%A3_th%E1%BB%8B.jpg');
+            background-size: 100% 100%;
+        }
+
+        #part3 {
+            background: url('https://vinmec-prod.s3.amazonaws.com/images/20200324_003117_012727_dieu-tri-viem-dinh-.max-1800x1800.jpg');
+            background-size: 100% 100%;
+        }
+
+        #part4 {
+            background: url('https://ik.imagekit.io/tvlk/blog/2021/09/du-lich-anh-8-1024x576.jpg');
+            background-size: 100% 100%;
+        }
+
+        .question {
+            width: 450px;
+            height: 150px;
+            background-color: rgba(183, 219, 128, 0.7);
+            border-radius: 5%;
+            position: fixed;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        main {
+            position: absolute;
+            width: 100%;
+        }
+
+        h2 {
+            color: yellowgreen
+        }
+
+        label,
+        input {
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+            font-size: 1.5em;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <main>
+        <section id="part1">
+            <h2>PART 1</h2>
+        </section>
+        <section id="part2">
+            <h2>PART 2</h2>
+        </section>
+        <section id="part3">
+            <h2>PART 3</h2>
+        </section>
+        <section id="part4">
+            <h2>PART 4</h2>
+        </section>
+    </main>
+    <div class="question">
+        <label for="ans">Trân trọng kính mời ny nhập đáp án?</label>
+        <input type="text" name="ans" id="ans">
+        <input type="button" value="OK" id="check">
+    </div>
+    <script>
+        document.getElementById('check').onclick = function () {
+            let answer = document.getElementById("ans").value;
+            let lans = answer.toLowerCase();
+            console.log(lans);
+            if (lans == 'lê thị kim anh') {
+                alert("Xin chúc mừng ny đã trả lời đúng!");
+            } else {
+                alert("Sai rồi!");
+            }
+        };
+    </script>
+</body>
+
+</html>

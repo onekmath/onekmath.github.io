@@ -4,6 +4,7 @@ const shadow = document.querySelector('.shadow');
 const giftContainer = document.querySelector('.gift-container');
 const text = document.querySelector('.text')
 const man = document.querySelector('.man')
+const fireworkContainer = document.querySelector('.firework-container');
 
 
 click.addEventListener('click', () => {
@@ -16,6 +17,7 @@ click.addEventListener('click', () => {
         text.classList.remove('active2');
         man.classList.add('active');
         man.classList.remove('active2');
+        fireworkContainer.classList.add('active');
     }
     else{
         click.classList.remove('active');
@@ -26,5 +28,6 @@ click.addEventListener('click', () => {
         text.classList.add('active2');
         man.classList.remove('active');
         man.classList.add('active2');
+        fireworkContainer.classList.remove('active');
     }
 })

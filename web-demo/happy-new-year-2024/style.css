@@ -1,0 +1,92 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: darkslategrey;
+}
+
+.clock {
+    position: absolute;
+    /* width: 600px; */
+    /* height: 200px; */
+    background-color: whitesmoke;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid saddlebrown 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    padding-right: 10px;
+}
+
+.number {
+    width: 100px;
+    height: 120px;
+    background-color: springgreen;
+    margin: 10px 0 10px 10px;
+}
+
+.block {
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+    float: left;
+}
+
+@keyframes fade-out {
+    0% {
+        
+    }
+    50% {
+        background-color: red;
+    }
+    100% {
+        background-color: red;
+    }
+}
+
+.block:nth-child(-n+20) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+29):nth-child(-n+30) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+39):nth-child(-n+40) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+49):nth-child(-n+50) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+51):nth-child(-n+60) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+61):nth-child(-n+70) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+71):nth-child(-n+72) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+81):nth-child(-n+82) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+91):nth-child(-n+92) {
+    animation: fade-out 3s ease-out infinite;
+}
+
+.block:nth-child(n+101):nth-child(-n+120) {
+    animation: fade-out 3s ease-out infinite;
+}
+

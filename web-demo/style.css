@@ -1,0 +1,25 @@
+
+
+.list-demo {
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.list-demo h2 {
+    color: blueviolet;
+}
+
+.card {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(28, 226, 217, 0.3);
+    box-shadow: 0 0 10px;
+}
+
+.card iframe {
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+}

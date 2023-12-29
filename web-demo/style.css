@@ -11,7 +11,7 @@
 }
 
 .card {
-    width: 60%;
+    width: 80%;
     margin: 20px auto;
     padding: 20px;
     background-color: rgba(28, 226, 217, 0.3);
@@ -19,7 +19,7 @@
 }
 
 .card iframe {
-    width: 400px;
-    height: 200px;
+    width: 90%;
     overflow: hidden;
 }
+

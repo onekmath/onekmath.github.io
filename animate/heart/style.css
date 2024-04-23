@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+#heart {
+    color: red;
+    position: absolute;
+    z-index: 1;
+
+}
+
+#pointer {
+    position: absolute;
+    z-index: 1;
+    transform: translate(-30px, 60px);
+    font-size: 100px;
+    animation: pingpong 2s ease infinite;
+}
+
+@keyframes pingpong {
+    0% {
+        transform: translate(-30px, 100px);
+    }
+    70% {
+        transform: translate(-30px, 60px);
+    }
+    100% {
+        transform: translate(-30px, 100px);
+    }
+}

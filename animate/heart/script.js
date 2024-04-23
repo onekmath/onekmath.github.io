@@ -38,12 +38,12 @@ async function animate() {
     hue = 0;
     rHeart = 1;
     pointer.innerHTML = "TT😍KA";
-    pointer.style.color = "white"
+    pointer.style.color = "white";
     while (true) {
         make_color(hue);
         heart.style.scale = rHeart;
         await sleep(300);
-        hue += 10;
+        hue += 5;
         hue = hue % 360;
         rHeart += 1;
         rHeart = rHeart % 50;

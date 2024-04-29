@@ -2,7 +2,7 @@ const heart = document.getElementById('heart');
 const pointer = document.getElementById('pointer')
 
 const rainbow = []
-N = 100
+N = 10
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

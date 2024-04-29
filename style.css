@@ -12,12 +12,12 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: aliceblue;
+  background-color: rgb(15, 229, 15);
   padding: 3px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 5px 5px lightblue;
+  box-shadow: 0px 5px 5px rgb(49, 195, 81);
 }
 
 .logo {
@@ -35,10 +35,6 @@ header {
   padding: 3px;
 }
 
-.brand a:hover {
-  background-color: gainsboro;
-}
-
 nav a {
   text-decoration: none;
   padding: 10px;
@@ -53,9 +49,34 @@ nav a:hover {
 .active {
   color: green;
 }
-
  /* /header */
 
+
+
+ /* List demo */
+ .list-demo {
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px;
+}
+
+.list-demo h2 {
+  color: blueviolet;
+}
+
+.card {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(16, 196, 13, 0.614);
+  box-shadow: 0 0 10px;
+}
+
+.card iframe {
+  width: 90%;
+  overflow: hidden;
+}
+/* end list demo  */
 
 
 

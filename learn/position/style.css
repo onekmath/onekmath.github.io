@@ -1,7 +1,16 @@
-.sticky {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    padding: 5px;
-    background-color: aqua;
+.parent {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+    position: relative;
+}
+
+.child {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

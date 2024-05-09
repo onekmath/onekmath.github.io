@@ -1,16 +1,16 @@
 [project]
-title = Side scroller tutorial
+title = hello_color
 version = 1.0
 write_log = 0
 compress_archive = 1
 publisher = unnamed
 developer = unnamed
-title_as_file_name = Sidescrollertutorial
+title_as_file_name = hello_color
 
 [display]
-width = 1280
-height = 720
-high_dpi = 0
+width = 640
+height = 1136
+high_dpi = 1
 samples = 0
 fullscreen = 0
 update_frequency = 0
@@ -31,12 +31,12 @@ type = 2D
 max_collision_object_count = 128
 use_fixed_timestep = 0
 gravity_y = -10
-debug = 0
+debug = 1
 debug_alpha = 0.9
 world_count = 4
 gravity_x = 0
 gravity_z = 0
-scale = 0.02
+scale = 1
 allow_dynamic_transforms = 1
 debug_scale = 30
 max_collisions = 64
@@ -84,10 +84,10 @@ repeat_delay = 0.5
 repeat_interval = 0.2
 gamepads = /builtins/input/default.gamepadsc
 game_binding = /input/game.input_bindingc
-use_accelerometer = 0
+use_accelerometer = 1
 
 [sprite]
-max_count = 128
+max_count = 512
 subpixels = 1
 
 [model]

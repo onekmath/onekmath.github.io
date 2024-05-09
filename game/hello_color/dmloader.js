@@ -69,8 +69,8 @@ var CUSTOM_PARAMETERS = {
         }
         prevInnerWidth = innerWidth;
         prevInnerHeight = innerHeight;
-        var width = 1280;
-        var height = 720;
+        var width = 640;
+        var height = 1136;
         var targetRatio = width / height;
         var actualRatio = innerWidth / innerHeight;
     
@@ -1014,7 +1014,7 @@ Module["locateFile"] = function(path, scriptDirectory)
     // dmengine*.wasm is hardcoded in the built JS loader for WASM,
     // we need to replace it here with the correct project name.
     if (path == "dmengine.wasm" || path == "dmengine_release.wasm" || path == "dmengine_headless.wasm") {
-        path = "Sidescrollertutorial.wasm";
+        path = "hello_color.wasm";
     }
     return scriptDirectory + path;
 };

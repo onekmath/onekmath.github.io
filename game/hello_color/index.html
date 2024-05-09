@@ -7,7 +7,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Side scroller tutorial 1.0</title>
+	<title>hello_color 1.0</title>
 	<style type='text/css'>
 	/* Disable user selection to avoid strange bug in Chrome on Windows:
 	* Selecting a text outside the canvas, then clicking+draging would
@@ -160,7 +160,7 @@
 			<p>WebGL is not supported by your browser - visit <a href="https://get.webgl.org/">https://get.webgl.org/</a> to learn more.</p>
 		</div>
 		<div id="canvas-container" class="canvas-app-canvas-container">
-			<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="1280" height="720"></canvas>
+			<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="640" height="1136"></canvas>
 		</div>
 		<div class="buttons-background">
 			<div class="button" onclick="Module.toggleFullscreen();">Fullscreen</div>
@@ -176,7 +176,7 @@
 			runningFromFileWarning.style.display = "block";
 		}
 		else {
-			EngineLoader.load("canvas", "Sidescrollertutorial");
+			EngineLoader.load("canvas", "hello_color");
 			runningFromFileWarning.parentNode.removeChild(runningFromFileWarning);
 		}
 	</script>

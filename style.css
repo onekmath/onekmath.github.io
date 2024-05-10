@@ -1,88 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Nunito, sans-serif;
-}
-
- /* header */
-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: rgb(15, 229, 15);
-  padding: 3px 10px;
+body {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0px 5px 5px rgb(49, 195, 81);
-}
-
-.logo {
-  width: 70px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-}
-
-.brand a {
-  text-decoration: none;
-  font-weight: bold;
-  padding: 3px;
-}
-
-nav a {
-  text-decoration: none;
-  padding: 10px;
-  font-weight: 800;
-}
-
-nav a:hover {
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-
-.active {
-  color: green;
-}
- /* /header */
-
-
-
- /* List demo */
- .list-demo {
-  margin-top: 10px;
-  text-align: center;
-  padding: 10px;
-}
-
-.list-demo h2 {
-  color: blueviolet;
-}
-
-.card {
-  width: 80%;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: rgba(16, 196, 13, 0.614);
-  box-shadow: 0 0 10px;
-}
-
-.card iframe {
-  width: 90%;
+  justify-content: center;
+  height: 100vh;
   overflow: hidden;
 }
 
-.list-demo a {
-  text-decoration: none;
+.menu {
+  width: 40%;
+  max-width: 500px;
+  min-width: 300px;
+  height: 80vh;
+  background-color: rgba(255, 228, 196, 0.562);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-/* end list demo  */
 
-
-
-
-
+button {
+  width: 50%;
+  height: 50px;
+  margin: 20px;
+}

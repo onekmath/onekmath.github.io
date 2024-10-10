@@ -1,53 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animation</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cylinder - Stacked Circles</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            perspective: 800px; /* Tạo độ sâu cho không gian 3D */
+        }
+
+        .cylinder {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Xếp chồng các hình tròn theo trục Y */
+        .circle:nth-child(1) {
+            transform: translateY(-4px) rotateX(90deg);
+        }
+        .circle:nth-child(2) {
+            transform: translateY(-3px) rotateX(90deg);
+        }
+        .circle:nth-child(3) {
+            transform: translateY(-2px) rotateX(90deg);
+        }
+        .circle:nth-child(4) {
+            transform: translateY(-1px) rotateX(90deg);
+        }
+        .circle:nth-child(5) {
+            transform: translateY(0px) rotateX(90deg);
+        }
+        .circle:nth-child(6) {
+            transform: translateY(1px) rotateX(90deg);
+        }
+        .circle:nth-child(7) {
+            transform: translateY(2px) rotateX(90deg);
+        }
+        .circle:nth-child(8) {
+            transform: translateY(3px) rotateX(90deg);
+        }
+    </style>
 </head>
-
 <body>
-  
-  <main>
-    <section class="list-demo">
-      <h2>Demo</h2>
 
-      <div class="list-card">
+<div class="cylinder">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+</div>
 
-        <a href="/animate/heart/">
-          <div class="card">
-            <iframe scrolling="no" src="/animate/heart/" frameborder="0"></iframe>
-            <p>Heart</p>
-          </div>
-        </a>
-
-        <a href="/animate/hpny2024/">
-          <div class="card">
-            <iframe scrolling="no" src="/animate/hpny2024/" frameborder="0"></iframe>
-            <p>Happy New Year 2024</p>
-          </div>
-        </a>
-
-        <a href="/animate/led-2024/">
-          <div class="card">
-            <iframe scrolling="no" src="/animate/led_2024/" frameborder="0"></iframe>
-            <p>A Led Clock</p>
-          </div>
-        </a>
-
-        <a href="/animate/cmsn-vk-2023/">
-          <div class="card">
-            <iframe scrolling="no" src="/animate/cmsn-vk-2023/" frameborder="0"></iframe>
-            <p>Happy Birthday - KA2023</p>
-          </div>
-        </a>
-
-      </div>
-    
-    </section>
-  </main>
 </body>
-
 </html>

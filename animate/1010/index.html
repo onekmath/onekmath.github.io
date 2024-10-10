@@ -1,0 +1,46 @@
+<canvas id="canvas" width="405" height="720"></canvas>
+<style>
+    canvas {
+        background-color: black;
+    }
+</style>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // function draw a point
+    function draw_point(x, y, r, color) {
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = '#E2F1E7'
+        ctx.beginPath()
+        ctx.arc(x, y, r, 0, Math.PI * 2, false);
+        ctx.fillStyle = color;
+        ctx.fill()
+    }
+
+    // Hàm vẽ hình hộp chữ nhật 3D
+    function drawGlow(x, y) {
+        const radius = 50;
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+
+        // Inner color (bright blue center)
+        gradient.addColorStop(0, "rgba(0, 255, 255, 1)"); // Màu xanh nhạt
+        // Middle color (soft glow)
+        gradient.addColorStop(0.2, "rgba(0, 255, 255, 0.6)"); // Màu xanh mờ dần
+        // Outer color (fade out)
+        gradient.addColorStop(1, "rgba(0, 255, 255, 0)"); // Màu xanh mờ hoàn toàn
+
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous frames
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+    }
+
+    // Add a mousemove event to track the glow point
+    canvas.addEventListener("mousemove", (event) => {
+        drawGlow(event.clientX, event.clientY);
+    });
+
+</script>

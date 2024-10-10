@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Rectangle</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.8); /* Màu nền trong suốt */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="glowCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('glowCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Kích thước và vị trí hình hộp chữ nhật
+        const rectWidth = 200;
+        const rectHeight = 100;
+        const x = (canvas.width - rectWidth) / 2;
+        const y = (canvas.height - rectHeight) / 2;
+
+        // Các màu sắc cho các cạnh
+        const colors = ['red', 'green', 'blue', 'yellow'];
+
+        // Vẽ hình hộp chữ nhật với hiệu ứng glow
+        for (let i = 0; i < colors.length; i++) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Xóa canvas
+
+            // Thiết lập hiệu ứng glow
+            ctx.shadowBlur = 20; // Kích thước hiệu ứng glow
+            ctx.shadowColor = colors[i]; // Màu glow
+
+            // Vẽ hình hộp chữ nhật
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)'; // Màu trong suốt cho mặt phẳng
+            ctx.fillRect(x, y, rectWidth, rectHeight);
+
+            ctx.strokeStyle = colors[i]; // Màu cho các cạnh
+            ctx.lineWidth = 10; // Độ dày của cạnh
+            ctx.strokeRect(x, y, rectWidth, rectHeight);
+
+            // Đợi một chút trước khi chuyển sang màu tiếp theo
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+    </script>
+</body>
+</html>

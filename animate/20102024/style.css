@@ -43,18 +43,34 @@ body {
 }
 
 .petal-a1 {
-    --rotateY: 0deg;
-    --translateX: 0px;
+    --rotateY: 330deg;
+    --translateX: -10px;
     --translateY: 0px;
-    --translateZ: -30px;
+    --translateZ: -20px;
 }
 
 .petal-a2 {
-    --rotateY: 50deg;
-    --translateX: -30px;
+    --rotateY: 110deg;
+    --translateX: 0px;
     --translateY: 0px;
     --translateZ: 0px;
 }
+
+.petal-a3 {
+    --rotateY: 200deg;
+    --translateX: 30px;
+    --translateY: 0px;
+    --translateZ: 0px;
+}
+
+.petal-a4 {
+    --rotateY: 290deg;
+    --translateX: 0px;
+    --translateY: 0px;
+    --translateZ: 0px;
+}
+
+
 
 @keyframes flowerBloom {
     0% {

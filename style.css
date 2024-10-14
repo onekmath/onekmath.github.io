@@ -1,26 +1,36 @@
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
+  width: 100%;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
-.menu {
-  width: 40%;
-  max-width: 500px;
-  min-width: 300px;
+.container {
   height: 80vh;
-  background-color: rgba(255, 228, 196, 0.562);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 0 10px 5px rgba(75, 88, 4, 0.808);
+  border-radius: 10px;
+  text-align: center;
 }
 
-button {
-  width: 50%;
-  height: 50px;
-  margin: 20px;
+
+#avatar {
+  height: 20vh;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin: 10px auto;
+}
+
+#name {
+  font-weight: 800;
+}
+
+.bio {
+  font-style: italic;
+  margin-top: 0;
+  font-size: 0.8em;
 }

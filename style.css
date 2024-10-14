@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   height: 100vh;
   width: 100%;
@@ -8,7 +12,7 @@ body {
   overflow: hidden;
 }
 
-.container {
+.wrapper {
   height: 80vh;
   width: 80%;
   background-color: white;
@@ -33,4 +37,49 @@ body {
   font-style: italic;
   margin-top: 0;
   font-size: 0.8em;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #00f529;
+  top: 0;
+  bottom: 0;
+  margin-left: -3px;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+  padding: 10px;
+}
+
+.container.left{
+  left: 0;
+}
+
+.container.right {
+  left: 50%;
+}
+
+.content {
+  background-color: greenyellow;
+  padding: 10px;
+}
+
+.content h2 {
+  font-size: 1em;
+  margin: 0;
+}
+
+.content p {
+  font-size: 0.8em;
+  margin: 0;
 }

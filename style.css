@@ -61,6 +61,19 @@ body {
   padding: 10px;
 }
 
+.container::after {
+  content: '';
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  background-color: aliceblue;
+  border: 3px solid darkgreen;
+  border-radius: 50%;
+  right: -13px;
+  top: 20px;
+  z-index: 1;
+}
+
 .container.left{
   left: 0;
 }
@@ -69,9 +82,21 @@ body {
   left: 50%;
 }
 
+.right::after {
+  left: -13px;
+}
+
 .content {
   background-color: greenyellow;
   padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.content:hover {
+  background-color: #45a049;
+  transform: scale(1.1); /* Slight zoom-in effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow */
 }
 
 .content h2 {
@@ -85,5 +110,5 @@ body {
 }
 
 .content.begin {
-  background-color: rgb(0, 255, 255);
+  background-color: aqua;
 }

@@ -15,3 +15,9 @@ document.getElementById('node3').addEventListener(
         window.open('/dance/neuvianhnhu.html', '_blank');
     }
 );
+
+document.getElementById('node4').addEventListener(
+    'click', function() {
+        window.open('/animate/20102024', '_blank');
+    }
+);

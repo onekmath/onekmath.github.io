@@ -39,10 +39,15 @@ body {
   font-size: 0.8em;
 }
 
+.timeline-container {
+  max-width: 1200px;
+  height: 40vh;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
 .timeline {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .timeline::after {
@@ -52,6 +57,7 @@ body {
   background-color: #00f529;
   top: 0;
   bottom: 0;
+  left: 50%;
   margin-left: -3px;
 }
 

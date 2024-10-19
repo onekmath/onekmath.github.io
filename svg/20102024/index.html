@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <svg width="500" height="700">
+    <svg width="500" height="700" >
         <defs>
             <linearGradient id="stemColor" x1="0%" y1="0%" x2="10%" y2="100%">
                 <stop offset="0%" style="stop-color:rgb(5, 5, 40); stop-opacity:1" />
@@ -45,7 +45,11 @@
             </filter>
 
             <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="5" dy="5" stdDeviation="4" flood-color="black" flood-opacity="0.5" />
+                <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="black" flood-opacity="0.5" />
+            </filter>
+
+            <filter id="dropShadowLeft" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="-3" dy="5" stdDeviation="4" flood-color="black" flood-opacity="0.5" />
             </filter>
 
         
@@ -150,6 +154,8 @@
         "
         />
 
+        
+
         <!-- Petal 1 of Flower 2 -->
         <path id="petal-21" fill="url(#insidePetalColor)"
         d="M250 378
@@ -158,15 +164,37 @@
         "
         />
 
+        <!-- Petal 3 of Flower 2 -->
+        <path id="petal-23" fill="url(#insidePetalColor)" filter="url(#dropShadowLeft)"
+        d="M260 390
+        Q270 370 260 310
+        Q260 300 240 290
+        Q225 285 210 310
+        Q200 330 260 390       
+        "
+        />
+
         <!-- Stamen of Flower 2-->
         <line x1="250" y1="378" x2="235" y2="355" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)"/>
+        <line x1="250" y1="378" x2="243" y2="350" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)"/>
+
+        <!-- Petal 4 of Flower 2 -->
+        <path id="petal-24" fill="url(#petalColor)"
+        d="M250 378
+        Q200 360 170 365
+        Q195 393 258 394                
+        "
+        />
         
         <!-- Petal 2 of Flower 2 -->
         <path id="petal-22" fill="url(#petalColor)"
         d="M258 394
         Q290 370 280 310 
         Q275 320 270 320
-        Q265 320 260 330    
+        Q265 320 260 330
+        Q250 355 240 360
+        Q235 360 230 375
+        Q230 390 258 394    
         "
         />
         

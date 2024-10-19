@@ -133,6 +133,9 @@
         "
         />
 
+        <!-- Stamen of Flower 1-->
+        <line x1="330" y1="230" x2="350" y2="210" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)"/>
+
         <!-- Petal 1 of Flower 1-->
         <path id="petal-11" fill="url(#petalColor)"
         d="M320 252 
@@ -154,10 +157,55 @@
         "
         />
 
-        
+        <!-- Petal 6 inside of Flower 2 -->
+        <path id="petal-26b" fill="url(#insidePetalColor)"
+        d="M310 310
+        Q310 300 300 295
+        Q280 300 250 378              
+        "
+        />
+
+        <!-- Petal 5 Inside of Flower 2 -->
+        <path id="petal-25b" fill="url(#insidePetalColor)" filter="url(#dropShadow)"
+        d="M293 305
+        Q295 300 290 295
+        Q285 295 280 290
+        Q275 290 270 295
+        Q265 300 260 305
+        Q250 320 270 330
+        Q260 370 270 370    
+        "
+        />
+
+        <!-- Petal 5 Outside of Flower 2
+        <path id="petal-25" fill="url(#petalColor)" filter="url(#dropShadow)"
+        d="M250 378
+        Q290 360 293 305    
+        "
+        /> -->
+
+        <!-- Petal 6 OutSide of Flower 2 -->
+        <path id="petal-26" fill="url(#petalColor)"
+        d="M250 380
+        Q270 400 295 340
+        Q296 335 310 310
+        Q300 314 295 320    
+        "
+        />
+
+        <!-- Petal 4 inside of Flower 2 -->
+        <path id="petal-24b" fill="url(#insidePetalColor)"
+        d="M170 365
+        Q170 360 165 355
+        Q160 350 160 345
+        Q160 340 158 335
+        Q165 320 200 335
+        L250 378                
+        "
+        />
 
         <!-- Petal 1 of Flower 2 -->
-        <path id="petal-21" fill="url(#insidePetalColor)"
+        <path id="petal-21" fill="url(#insidePetalColor)" filter="url(#dropShadowLeft)"
         d="M250 378
         Q230 300 180 320
         Q180 380 250 378        
@@ -181,7 +229,8 @@
         <!-- Petal 4 of Flower 2 -->
         <path id="petal-24" fill="url(#petalColor)"
         d="M250 378
-        Q200 360 170 365
+        Q200 360 190 365
+        Q175 367 170 365
         Q195 393 258 394                
         "
         />

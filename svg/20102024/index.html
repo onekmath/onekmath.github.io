@@ -20,7 +20,8 @@
             background: radial-gradient(circle, #554572, #151B33);
         }
 
-        line, path {
+        line,
+        path {
             stroke-dasharray: 500;
             stroke-dashoffset: 500;
             fill-opacity: 0;
@@ -70,29 +71,17 @@
                 opacity: 0;
                 scale: 1.2;
             }
+
             100% {
                 opacity: 1;
                 scale: 1;
             }
         }
-
-        /* textPath {
-            opacity: 0;
-            animation: fadeIn 0.1s ease forwards;
-            animation-delay: 5.1s;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        } */
-
     </style>
 </head>
 
 <body>
-    <svg width="600" height="700" >
+    <svg width="600" height="700">
         <defs>
             <linearGradient id="stemColor" x1="0%" y1="0%" x2="10%" y2="100%">
                 <stop offset="0%" style="stop-color:rgb(5, 5, 40); stop-opacity:1" />
@@ -127,23 +116,19 @@
             </filter>
 
             <!-- Define a path for text  -->
-            <path id="myPath" d="M 70 168 C 190 180, 280 20, 450 190" stroke="none" fill="transparent"/>
-    
-        
+            <path id="myPath" d="M 70 168 C 190 180, 280 20, 450 190" stroke="none" fill="transparent" />
+
         </defs>
 
-       <g class="flower1">
-         <!-- Flower 1 -->
-        <!-- Stem of Flower 1-->
-        <path id="stem-1" fill="none" stroke="url(#stemColor)" stroke-width="6" 
-        d="M250 700 
+        <g class="flower1">
+            <!-- Flower 1 -->
+            <!-- Stem of Flower 1-->
+            <path id="stem-1" fill="none" stroke="url(#stemColor)" stroke-width="6" d="M250 700 
         Q275 500 310 400 
-        Q335 300 320 250"
-        />
+        Q335 300 320 250" />
 
-        <!-- Petal 2 Inside of Flower 1-->
-        <path class="petal" id="petal-12b" fill="url(#insidePetalColor)"
-        d="M390 200
+            <!-- Petal 2 Inside of Flower 1-->
+            <path class="petal" id="petal-12b" fill="url(#insidePetalColor)" d="M390 200
         Q400 195 395 190
         Q390 185 395 180
         Q395 175 385 170
@@ -151,72 +136,58 @@
         Q370 160 320 250
         " />
 
-        <!-- Petal 2 Outside of Flower 1-->
-        <path class="petal" id="petal-12" fill="url(#petalColor)"
-        d="M320 250
+            <!-- Petal 2 Outside of Flower 1-->
+            <path class="petal" id="petal-12" fill="url(#petalColor)" d="M320 250
         Q370 245 390 200
         Q385 205 370 210
         Q350 210 320 250
         " />
 
-        <!-- Petal 3 of Flower 1 -->
-        <path class="petal" id="petal-13" fill="url(#insidePetalColor)" filter="url(#dropShadow)"
-        d="M320 250
+            <!-- Petal 3 of Flower 1 -->
+            <path class="petal" id="petal-13" fill="url(#insidePetalColor)" filter="url(#dropShadow)" d="M320 250
         Q341 225 355 210
         Q375 190 360 150
         Q350 135 300 200
-        "
-        />
+        " />
 
-        <!-- Petal 6 Inside of Flower 1 -->
-        <path class="petal" id="petal-16b" fill="url(#insidePetalColor)"
-        d="M230 150
+            <!-- Petal 6 Inside of Flower 1 -->
+            <path class="petal" id="petal-16b" fill="url(#insidePetalColor)" d="M230 150
         Q225 140 235 138
         Q250 145 285 230
-        "
-        />
+        " />
 
-        <!-- Petal 5 Inside of Flower 1 -->
-        <path class="petal" id="petal-15b" fill="url(#insidePetalColor)"
-        d="M300 160
+            <!-- Petal 5 Inside of Flower 1 -->
+            <path class="petal" id="petal-15b" fill="url(#insidePetalColor)" d="M300 160
         Q285 135 280 135
         L263 125
         Q258 128 255 129
         Q240 135 260 170 
-        "
-        />
+        " />
 
-        <!-- Petal 5 Outside of Flower 1 -->
-        <path class="petal" id="petal-15b" fill="url(#petalColor)"
-        d="M248 140
+            <!-- Petal 5 Outside of Flower 1 -->
+            <path class="petal" id="petal-15b" fill="url(#petalColor)" d="M248 140
         Q255 210 280 220
-        "
-        />
+        " />
 
-        <!-- Petal 6 Outside of Flower 1  -->
-        <path class="petal" id="petal-16" fill="url(#petalColor)"
-        d="M230 150
+            <!-- Petal 6 Outside of Flower 1  -->
+            <path class="petal" id="petal-16" fill="url(#petalColor)" d="M230 150
         Q228 155 235 165
         Q242 175 245 185
         Q250 230 300 245
-        "
-        />
+        " />
 
-        <!-- Petal 4 of Flower 1 -->
-        <path class="petal" id="petal-14" fill="url(#insidePetalColor)" filter="url(#dropShadow)" 
-        d="M330 240
+            <!-- Petal 4 of Flower 1 -->
+            <path class="petal" id="petal-14" fill="url(#insidePetalColor)" filter="url(#dropShadow)" d="M330 240
         Q355 160 340 140
         Q337 130 315 126
         Q280 130 300 180
-        "
-        />
+        " />
 
-        Stamen of Flower 1
-        <line x1="330" y1="230" x2="350" y2="210" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)"/>
+            Stamen of Flower 1
+            <line x1="330" y1="230" x2="350" y2="210" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)" />
 
-        <!-- Petal 1 of Flower 1-->
-        <path class="petal" id="petal-11" fill="url(#petalColor)"
-        d="M320 252 
+            <!-- Petal 1 of Flower 1-->
+            <path class="petal" id="petal-11" fill="url(#petalColor)" d="M320 252 
         Q355 240 345 184
         Q335 170 300 160
         Q295 158 290 163
@@ -224,157 +195,126 @@
         Q262 155 260 165
         Q260 240 320 252 
         " />
-       </g>
+        </g>
 
         <g class="flower2">
             <!-- Flower 2 -->
-        <!-- Stem of Flower 2-->
-        <path id="stem-2" fill="none" stroke="url(#stemColor)" stroke-width="6" 
-        d="M290 700 
+            <!-- Stem of Flower 2-->
+            <path id="stem-2" fill="none" stroke="url(#stemColor)" stroke-width="6" d="M290 700 
         Q260 600 250 550
         Q240 500 250 450
         Q260 400 255 380
-        "
-        />
+        " />
 
-        <!-- Petal 6 inside of Flower 2 -->
-        <path class="petal" id="petal-26b" fill="url(#insidePetalColor)"
-        d="M310 310
+            <!-- Petal 6 inside of Flower 2 -->
+            <path class="petal" id="petal-26b" fill="url(#insidePetalColor)" d="M310 310
         Q310 300 300 295
         Q280 300 250 378              
-        "
-        />
+        " />
 
-        <!-- Petal 5 Inside of Flower 2 -->
-        <path class="petal" id="petal-25b" fill="url(#insidePetalColor)" filter="url(#dropShadow)"
-        d="M293 305
+            <!-- Petal 5 Inside of Flower 2 -->
+            <path class="petal" id="petal-25b" fill="url(#insidePetalColor)" filter="url(#dropShadow)" d="M293 305
         Q295 300 290 295
         Q285 295 280 290
         Q275 290 270 295
         Q265 300 260 305
         Q250 320 270 330
         Q260 370 270 370    
-        "
-        />
+        " />
 
-        <!-- Petal 5 Outside of Flower 2
-        <path id="petal-25" fill="url(#petalColor)" filter="url(#dropShadow)"
-        d="M250 378
-        Q290 360 293 305    
-        "
-        /> -->
-
-        <!-- Petal 6 OutSide of Flower 2 -->
-        <path class="petal" id="petal-26" fill="url(#petalColor)"
-        d="M250 380
+            <!-- Petal 6 OutSide of Flower 2 -->
+            <path class="petal" id="petal-26" fill="url(#petalColor)" d="M250 380
         Q270 400 295 340
         Q296 335 310 310
         Q300 314 295 320    
-        "
-        />
+        " />
 
-        <!-- Petal 4 inside of Flower 2 -->
-        <path class="petal" id="petal-24b" fill="url(#insidePetalColor)"
-        d="M170 365
+            <!-- Petal 4 inside of Flower 2 -->
+            <path class="petal" id="petal-24b" fill="url(#insidePetalColor)" d="M170 365
         Q170 360 165 355
         Q160 350 160 345
         Q160 340 158 335
         Q165 320 200 335
         L250 378                
-        "
-        />
+        " />
 
-        <!-- Petal 1 of Flower 2 -->
-        <path class="petal" id="petal-21" fill="url(#insidePetalColor)" filter="url(#dropShadowLeft)"
-        d="M250 378
+            <!-- Petal 1 of Flower 2 -->
+            <path class="petal" id="petal-21" fill="url(#insidePetalColor)" filter="url(#dropShadowLeft)" d="M250 378
         Q230 300 180 320
         Q180 380 250 378        
-        "
-        />
+        " />
 
-        <!-- Petal 3 of Flower 2 -->
-        <path class="petal" id="petal-23" fill="url(#insidePetalColor)" filter="url(#dropShadowLeft)"
-        d="M260 390
+            <!-- Petal 3 of Flower 2 -->
+            <path class="petal" id="petal-23" fill="url(#insidePetalColor)" filter="url(#dropShadowLeft)" d="M260 390
         Q270 370 260 310
         Q260 300 240 290
         Q225 285 210 310
         Q200 330 260 390       
-        "
-        />
+        " />
 
-        <!-- Stamen of Flower 2-->
-        <line x1="250" y1="378" x2="235" y2="355" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)"/>
-        <line x1="250" y1="378" x2="243" y2="350" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)"/>
+            <!-- Stamen of Flower 2-->
+            <line x1="250" y1="378" x2="235" y2="355" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)" />
+            <line x1="250" y1="378" x2="243" y2="350" stroke="darkblue" stroke-width="5" filter="url(#lineBlur)" />
 
-        <!-- Petal 4 of Flower 2 -->
-        <path class="petal" id="petal-24" fill="url(#petalColor)"
-        d="M250 378
+            <!-- Petal 4 of Flower 2 -->
+            <path class="petal" id="petal-24" fill="url(#petalColor)" d="M250 378
         Q200 360 190 365
         Q175 367 170 365
         Q195 393 258 394                
-        "
-        />
-        
-        <!-- Petal 2 of Flower 2 -->
-        <path class="petal" id="petal-22" fill="url(#petalColor)"
-        d="M258 394
+        " />
+
+            <!-- Petal 2 of Flower 2 -->
+            <path class="petal" id="petal-22" fill="url(#petalColor)" d="M258 394
         Q290 370 280 310 
         Q275 320 270 320
         Q265 320 260 330
         Q250 355 240 360
         Q235 360 230 375
         Q230 390 258 394    
-        "
-        />
+        " />
 
-        <!-- Stem 3-->
-        <path id="stem-3" fill="none" stroke="url(#stemColor)" stroke-width="3" 
-        d="M300 700
+            <!-- Stem 3-->
+            <path id="stem-3" fill="none" stroke="url(#stemColor)" stroke-width="3" d="M300 700
         Q330 600 320 500
         Q310 400 370 300 
-        "
-        />
+        " />
 
-        <!-- Leaf 1 of Stem 3 -->
-        <path id="leaf-1" fill="none" stroke="url(#leafColor)" stroke-width="1"
-        d="M370 300
+            <!-- Leaf 1 of Stem 3 -->
+            <path id="leaf-1" fill="none" stroke="url(#leafColor)" stroke-width="1" d="M370 300
         Q370 270 400 260
         Q380 310 370 300
         Q374 275 400 260
         Q380 300 370 300
         Q385 275 400 260
-        "
-        />
+        " />
 
-        <!-- Leaf 2 of Stem 3 -->
-        <path id="leaf-2" fill="none" stroke="url(#leafColor)" stroke-width="1"
-        d="M320 450
+            <!-- Leaf 2 of Stem 3 -->
+            <path id="leaf-2" fill="none" stroke="url(#leafColor)" stroke-width="1" d="M320 450
         Q310 390 290 385
         Q300 450 320 450
         Q305 400 290 385
         Q300 430 320 450
         Q300 410 290 385
-        "
-        />
+        " />
 
-        <!-- Leaf 3 of Stem 3 -->
-        <path id="leaf-3" fill="none" stroke="url(#leafColor)" stroke-width="1"
-        d="M320 600
+            <!-- Leaf 3 of Stem 3 -->
+            <path id="leaf-3" fill="none" stroke="url(#leafColor)" stroke-width="1" d="M320 600
         Q340 610 370 570
         Q330 560 320 600
         Q340 600 370 570
         Q330 570 320 600
         Q340 590 370 570
         Q330 580 320 600
-        "
-        />
+        " />
         </g>
 
         <!-- Text  -->
-        <text class="day" x="120" y="270" font-family="Arial" font-size="100" fill="url(#insidePetalColor)" filter="url(#dropShadow)">
+        <text class="day" x="120" y="270" font-family="Arial" font-size="100" fill="url(#insidePetalColor)"
+            filter="url(#dropShadow)">
             20
         </text>
-        <text class="day" x="390" y="270" font-family="Arial" font-size="100" fill="url(#insidePetalColor)" filter="url(#dropShadow)">
+        <text class="day" x="390" y="270" font-family="Arial" font-size="100" fill="url(#insidePetalColor)"
+            filter="url(#dropShadow)">
             10
         </text>
 
@@ -382,22 +322,11 @@
         <text font-family="Arial" font-size="35" fill="url(#insidePetalColor)">
             <textPath href="#myPath" startOffset="100%" opacity="0">
                 Rạng Ngời Như Đóa Hoa
-                <animate 
-                    attributeName="startOffset" 
-                    from="100%" 
-                    to="-100%" 
-                    dur="5s" 
-                    repeatCount="indefinite" />
-                <animate 
-                attributeName="opacity" 
-                from="0" 
-                to="1" 
-                begin="5s" 
-                dur="1s" 
-                fill="freeze" />
+                <animate attributeName="startOffset" from="100%" to="-100%" dur="5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0" to="1" begin="5s" dur="1s" fill="freeze" />
             </textPath>
         </text>
-        
+
     </svg>
 </body>
 

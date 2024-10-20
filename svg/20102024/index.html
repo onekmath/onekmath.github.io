@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <svg width="500" height="700" >
+    <svg width="600" height="700" >
         <defs>
             <linearGradient id="stemColor" x1="0%" y1="0%" x2="10%" y2="100%">
                 <stop offset="0%" style="stop-color:rgb(5, 5, 40); stop-opacity:1" />
@@ -38,6 +38,11 @@
             <linearGradient id="insidePetalColor" x1="0%" y1="100%" x2="0%" y2="0%">
                 <stop offset="0%" style="stop-color:rgb(255, 48, 183); stop-opacity:1" />
                 <stop offset="100%" style="stop-color:rgb(212, 202, 240); stop-opacity:1" />
+            </linearGradient>
+
+            <linearGradient id="leafColor" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(5, 5, 40); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(111, 214, 233); stop-opacity:1" />
             </linearGradient>
 
             <filter id="lineBlur" x="0" y="0">
@@ -246,6 +251,56 @@
         Q230 390 258 394    
         "
         />
+
+        <!-- Stem 3-->
+        <path id="stem-3" fill="none" stroke="url(#stemColor)" stroke-width="3" 
+        d="M300 700
+        Q330 600 320 500
+        Q310 400 370 300 
+        "
+        />
+
+        <!-- Leaf 1 of Stem 3 -->
+        <path id="leaf-1" fill="none" stroke="url(#leafColor)" stroke-width="1"
+        d="M370 300
+        Q370 270 400 260
+        Q380 310 370 300
+        Q374 275 400 260
+        Q380 300 370 300
+        Q385 275 400 260
+        "
+        />
+
+        <!-- Leaf 2 of Stem 3 -->
+        <path id="leaf-2" fill="none" stroke="url(#leafColor)" stroke-width="1"
+        d="M320 450
+        Q310 390 290 385
+        Q300 450 320 450
+        Q305 400 290 385
+        Q300 430 320 450
+        Q300 410 290 385
+        "
+        />
+
+        <!-- Leaf 3 of Stem 3 -->
+        <path id="leaf-3" fill="none" stroke="url(#leafColor)" stroke-width="1"
+        d="M320 600
+        Q340 610 370 570
+        Q330 560 320 600
+        Q340 600 370 570
+        Q330 570 320 600
+        Q340 590 370 570
+        Q330 580 320 600
+        "
+        />
+
+        <!-- Text  -->
+        <text x="120" y="270" font-family="Arial" font-size="100" fill="url(#insidePetalColor)" filter="url(#dropShadow)">
+            20
+        </text>
+        <text x="390" y="270" font-family="Arial" font-size="100" fill="url(#insidePetalColor)" filter="url(#dropShadow)">
+            10
+        </text>
         
     </svg>
 </body>

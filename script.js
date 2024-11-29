@@ -18,6 +18,6 @@ document.getElementById('node3').addEventListener(
 
 document.getElementById('node4').addEventListener(
     'click', function() {
-        window.open('/animate/20102024', '_blank');
+        window.open('/animate/lotus', '_blank');
     }
 );

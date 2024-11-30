@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Light Points Moving Towards Mouse</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas to full-screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const centerX = canvas.width / 2; // X coordinate of center
+        const centerY = canvas.height / 2; // Y coordinate of center
+
+        // Class for a light point (satellite)
+        class LightPoint {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = 2 + Math.random() * 3; // Random size
+                this.speed = 1 + Math.random() * 2; // Random speed
+                this.color = this.getRandomColor(); // Random color
+                this.alpha = 1; // Initial opacity (fully opaque)
+            }
+
+            // Method to generate random color
+            getRandomColor() {
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                return `rgb(${r}, ${g}, ${b})`;
+            }
+
+            // Update position to move towards the center of the canvas
+            update() {
+                const dx = centerX - this.x;
+                const dy = centerY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance > 1) {
+                    // Move towards the center position
+                    this.x += (dx / distance) * this.speed;
+                    this.y += (dy / distance) * this.speed;
+
+                    // Fade the point as it moves towards the center
+                    this.alpha = Math.max(0, this.alpha - 0.01); // Decrease opacity until it reaches 0
+                } else {
+                    // Reset point position when it reaches the center
+                    this.reset();
+                }
+            }
+
+            // Reset the point to a new random position and full opacity
+            reset() {
+                this.x = Math.random() * canvas.width; // New random x position
+                this.y = Math.random() * canvas.height; // New random y position
+                this.alpha = 1; // Reset opacity to fully opaque
+            }
+
+            // Draw the light point with the current opacity
+            draw() {
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                gradient.addColorStop(0, `rgba(255, 255, 0, ${this.alpha})`);
+                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Array to store the light points
+        const lightPoints = [];
+
+        // Generate light points at random positions when the page loads
+        window.onload = () => {
+            // Create 100 light points at random positions outside canvas
+            for (let i = 0; i < 100; i++) {
+                lightPoints.push(new LightPoint());
+            }
+        };
+
+        // Animation loop
+        function animate() {   
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+            // Update and draw all light points
+            for (let i = 0; i < lightPoints.length; i++) {
+                const point = lightPoints[i];
+                point.update(); // Move the point towards the center
+                point.draw(); // Draw the point with current opacity
+            }
+
+            requestAnimationFrame(animate); // Continue animation
+        }
+
+        // Start animation
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+
+</html>

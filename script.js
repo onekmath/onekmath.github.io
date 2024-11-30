@@ -21,3 +21,9 @@ document.getElementById('node4').addEventListener(
         window.open('/animate/lotus', '_blank');
     }
 );
+
+document.getElementById('node6').addEventListener(
+    'click', function() {
+        window.open('/hpbd/ka28', '_blank');
+    }
+);

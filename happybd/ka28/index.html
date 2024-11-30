@@ -9,11 +9,12 @@
         body {
             margin: 0;
             overflow: hidden;
+            background-color: #000;
         }
 
         canvas {
             display: block;
-            background-color: black;
+            cursor: crosshair;
         }
     </style>
 </head>
@@ -29,24 +30,32 @@
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
 
-        // Class Light Point
         class LightPoint {
-            constructor() {
-                this.x = centerX;
-                this.y = centerY;
-                this.radius = 10;
-                this.color = 'red';
+            constructor(pivotX = centerX, pivotY = centerY, a = 300, b = 80, hue = 30) {
+                this.pivotX = pivotX;
+                this.pivotY = pivotY;
+                this.a = a;
+                this.b = b;
+                this.hue = hue;           
+                
+                // note param
+                this.angle = 0;
+                this.radius = 15;
             }
 
-            update() {
-                this.x += 1;
-                if (this.x > canvas.width) this.x = centerX;
+            update(speed) {
+                this.x = this.pivotX + this.a * Math.cos(this.angle);
+                this.y = this.pivotY + this.b * Math.sin(this.angle);
+                this.angle += speed;
+                if (this.angle >= Math.PI * 2) this.angle = 0;
+                if (this.angle <= -Math.PI * 2) this.angle = 0;
             }
 
             draw() {
+
                 const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-                gradient.addColorStop(0, this.color);
-                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                gradient.addColorStop(0, `hsla(${this.hue}, 100%, 50%, 1)`);
+                gradient.addColorStop(1, `hsla(${this.hue}, 100%, 50%, 0)`);
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -54,11 +63,47 @@
             }
         }
 
-        const point = new LightPoint();
+        // List of point
+        const points = [];
+        const points2 = []
+        const numPoint = 15;
+        for (let i = 0; i < numPoint; i++) {
+            points.push(
+                new LightPoint(
+                    pivotX = centerX,
+                    pivotY = centerY + 20 * i
+                )
+            )
+            points2.push(
+                new LightPoint(
+                    pivotX = centerX,
+                    pivotY = centerY + 20 * i,
+                    a = 250,
+                    b = 60,
+                    hue = 25
+                )
+            )
+        }
+
         function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            point.update();
-            point.draw();
+             // Vẽ lớp mờ để tạo hiệu ứng vệt sáng
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Màu nền mờ dần
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            points.forEach (
+                (point) => {
+                    point.update(0.05);
+                    point.draw();
+                }
+            )
+
+            points2.forEach (
+                (point) => {
+                    point.update(-0.05);
+                    point.draw();
+                }
+            )
+            
             requestAnimationFrame(animate);
         }
 

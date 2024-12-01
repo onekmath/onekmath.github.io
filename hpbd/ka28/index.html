@@ -30,30 +30,47 @@
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
 
+        const a0 = canvas.width / 2;
+        const b0 = canvas.height / 5;
+        const speed0 = 0.05;
+        const shrinkRate = 0.3;
+        const minSize = canvas.width / 4;
+
         class LightPoint {
-            constructor(pivotX = centerX, pivotY = centerY, a = 300, b = 80, hue = 30) {
+            constructor(pivotX = centerX, pivotY = centerY, hue, speed) {
                 this.pivotX = pivotX;
                 this.pivotY = pivotY;
-                this.a = a;
-                this.b = b;
-                this.hue = hue;           
-                
+                this.hue = hue;
+                this.speed = speed;
+
                 // note param
+                this.a = a0;
+                this.b = b0;
                 this.angle = 0;
-                this.radius = 15;
+                this.radius = 5;
             }
 
-            update(speed) {
+            update() {
                 this.x = this.pivotX + this.a * Math.cos(this.angle);
                 this.y = this.pivotY + this.b * Math.sin(this.angle);
-                this.angle += speed;
+                this.angle += this.speed;
                 if (this.angle >= Math.PI * 2) this.angle = 0;
-                if (this.angle <= -Math.PI * 2) this.angle = 0;
+
+                // Giảm kích thước của elip
+                if (this.a > minSize) {
+                    this.a -= shrinkRate;
+                    this.b -= shrinkRate;
+                } //  bán trục phụ
+
+            }
+
+            reset() {
+
             }
 
             draw() {
-
                 const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                console.log(this.hue);
                 gradient.addColorStop(0, `hsla(${this.hue}, 100%, 50%, 1)`);
                 gradient.addColorStop(1, `hsla(${this.hue}, 100%, 50%, 0)`);
                 ctx.fillStyle = gradient;
@@ -64,46 +81,35 @@
         }
 
         // List of point
-        const points = [];
-        const points2 = []
-        const numPoint = 15;
-        for (let i = 0; i < numPoint; i++) {
-            points.push(
-                new LightPoint(
+        const la = [];
+        const N = 28;
+        for (i = 0; i < N; i++) {
+            const pa = [];
+            for (j = 0; j < N; j++) {
+                pa.push(new LightPoint(
                     pivotX = centerX,
-                    pivotY = centerY + 20 * i
-                )
-            )
-            points2.push(
-                new LightPoint(
-                    pivotX = centerX,
-                    pivotY = centerY + 20 * i,
-                    a = 250,
-                    b = 60,
-                    hue = 25
-                )
-            )
+                    pivotY = centerY + 10 * j,
+                    hue = 9*i + 1,
+                    speed = speed0 / (i/2+1)
+                ))
+            }
+            la.push(pa);
         }
 
         function animate() {
-             // Vẽ lớp mờ để tạo hiệu ứng vệt sáng
+            // Vẽ lớp mờ để tạo hiệu ứng vệt sáng
             ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Màu nền mờ dần
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            points.forEach (
-                (point) => {
-                    point.update(0.05);
-                    point.draw();
-                }
-            )
 
-            points2.forEach (
-                (point) => {
-                    point.update(-0.05);
-                    point.draw();
-                }
-            )
-            
+            la.forEach((points) => {
+                points.forEach(
+                    (point) => {
+                        point.update();
+                        point.draw();
+                    }
+                )
+            })
+
             requestAnimationFrame(animate);
         }
 

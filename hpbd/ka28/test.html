@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Candle Flame</title>
+  <style>
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="candleCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById("candleCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Kích thước canvas
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // Lớp Particle (đốm lửa)
+    class Particle {
+      constructor(x, y, size, color) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.color = color;
+        this.speedY = Math.random() * -1 - 0.5; // Tốc độ bay lên
+        this.opacity = 1; // Độ trong suốt
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.opacity -= 0.01; // Làm mờ dần
+        if (this.opacity < 0) this.opacity = 0;
+      }
+
+      draw() {
+        ctx.beginPath();
+        const gradient = ctx.createRadialGradient(
+          this.x, this.y, 0,
+          this.x, this.y, this.size
+        );
+        gradient.addColorStop(0, `rgba(255, 200, 50, ${this.opacity})`); // Vàng sáng
+        gradient.addColorStop(0.5, `rgba(255, 100, 10, ${this.opacity})`); // Cam
+        gradient.addColorStop(1, `rgba(255, 0, 0, 0)`); // Đỏ nhạt
+        ctx.fillStyle = gradient;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Danh sách particles
+    const particles = [];
+
+    // Tạo particles mới
+    function createParticles() {
+      const x = width / 2; // Tâm ngọn nến
+      const y = height / 2 + 100; // Vị trí thấp hơn một chút
+      const size = Math.random() * 20 + 10; // Kích thước ngẫu nhiên
+      const color = "rgba(255, 150, 0, 1)";
+      particles.push(new Particle(x, y, size, color));
+    }
+
+    // Cập nhật và vẽ particles
+    function handleParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+
+        // Xóa particle khi đã mờ hoàn toàn
+        if (particles[i].opacity <= 0) {
+          particles.splice(i, 1);
+          i--;
+        }
+      }
+    }
+
+    // Animation loop
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Vẽ phần ngọn lửa chính bằng gradient
+      const flameGradient = ctx.createRadialGradient(
+        width / 2, height / 2 + 100, 10,
+        width / 2, height / 2 - 50, 100
+      );
+      flameGradient.addColorStop(0, "rgba(255, 200, 50, 1)"); // Vàng sáng
+      flameGradient.addColorStop(0.5, "rgba(255, 100, 10, 0.8)"); // Cam
+      flameGradient.addColorStop(1, "rgba(255, 0, 0, 0)"); // Đỏ nhạt
+
+      ctx.beginPath();
+      ctx.arc(width / 2, height / 2, 100, 0, Math.PI * 2);
+      ctx.fillStyle = flameGradient;
+      ctx.fill();
+
+      // Tạo và xử lý particles (vệt khói)
+      createParticles();
+      handleParticles();
+
+      requestAnimationFrame(animate);
+    }
+
+    // Bắt đầu animation
+    animate();
+  </script>
+</body>
+</html>

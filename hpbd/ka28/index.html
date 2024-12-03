@@ -1,125 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPBD KA28</title>
+    <title>Document</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
-            background-color: #000;
+            background-color: black;
         }
-
         canvas {
             display: block;
             cursor: crosshair;
         }
     </style>
 </head>
-
 <body>
     <canvas id="myCanvas"></canvas>
+    
     <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
+        const speed = 0.02;
 
-        const a0 = canvas.width / 2;
-        const b0 = canvas.height / 5;
-        const speed0 = 0.05;
-        const shrinkRate = 0.3;
-        const minSize = canvas.width / 4;
-
+        
         class LightPoint {
-            constructor(pivotX = centerX, pivotY = centerY, hue, speed) {
-                this.pivotX = pivotX;
-                this.pivotY = pivotY;
-                this.hue = hue;
-                this.speed = speed;
-
-                // note param
-                this.a = a0;
-                this.b = b0;
-                this.angle = 0;
-                this.radius = 5;
+            constructor(a, b, angle) {
+                this.a = a, 
+                this.b = b, 
+                this.angle = angle
             }
 
             update() {
-                this.x = this.pivotX + this.a * Math.cos(this.angle);
-                this.y = this.pivotY + this.b * Math.sin(this.angle);
-                this.angle += this.speed;
+                this.angle += speed;
                 if (this.angle >= Math.PI * 2) this.angle = 0;
-
-                // Giảm kích thước của elip
-                if (this.a > minSize) {
-                    this.a -= shrinkRate;
-                    this.b -= shrinkRate;
-                } //  bán trục phụ
-
-            }
-
-            reset() {
-
             }
 
             draw() {
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-                console.log(this.hue);
-                gradient.addColorStop(0, `hsla(${this.hue}, 100%, 50%, 1)`);
-                gradient.addColorStop(1, `hsla(${this.hue}, 100%, 50%, 0)`);
+                const x = centerX + this.a * Math.cos(this.angle);
+                const y = centerY + this.b * Math.sin(this.angle);
+
+                const gradient = ctx.createRadialGradient(x, y, 0, x, y, 10);
+                gradient.addColorStop(0, 'hsla(25, 100%, 70%, 1)');
+                gradient.addColorStop(1, 'hsla(25, 100%, 70%, 0)');
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.arc(x, y, 10, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        // List of point
-        const la = [];
-        const N = 28;
-        for (i = 0; i < N; i++) {
-            const pa = [];
-            for (j = 0; j < N; j++) {
-                pa.push(new LightPoint(
-                    pivotX = centerX,
-                    pivotY = centerY + 10 * j,
-                    hue = 9*i + 1,
-                    speed = speed0 / (i/2+1)
-                ))
-            }
-            la.push(pa);
-        }
+        const point = new LightPoint(100, 50, 0);
 
         function animate() {
-            // Vẽ lớp mờ để tạo hiệu ứng vệt sáng
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Màu nền mờ dần
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            la.forEach((points) => {
-                points.forEach(
-                    (point) => {
-                        point.update();
-                        point.draw();
-                    }
-                )
-            })
+            point.update();
+            point.draw();
 
             requestAnimationFrame(animate);
         }
 
         animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        })
     </script>
 </body>
-
 </html>

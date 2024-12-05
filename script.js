@@ -24,6 +24,6 @@ document.getElementById('node4').addEventListener(
 
 document.getElementById('node6').addEventListener(
     'click', function() {
-        window.open('/hpbd/ka28', '_blank');
+        window.open('/hpbd/ka27', '_blank');
     }
 );

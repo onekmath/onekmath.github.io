@@ -40,24 +40,25 @@
 
             update() {
                 this.angle += speed;
-                if (this.angle >= Math.PI * 2) this.angle = 0;
+                if (this.angle >= Math.PI * 2) this.angle = 0; 
             }
 
             draw() {
                 const x = centerX + this.a * Math.cos(this.angle);
                 const y = centerY + this.b * Math.sin(this.angle);
+                const radius = 5 * (2 + Math.sin(this.angle));
 
-                const gradient = ctx.createRadialGradient(x, y, 0, x, y, 10);
+                const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
                 gradient.addColorStop(0, 'hsla(25, 100%, 70%, 1)');
                 gradient.addColorStop(1, 'hsla(25, 100%, 70%, 0)');
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
-                ctx.arc(x, y, 10, 0, Math.PI * 2);
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        const point = new LightPoint(100, 50, 0);
+        const point = new LightPoint(200, 50, 0);
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -69,6 +70,11 @@
         }
 
         animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        })
     </script>
 </body>
 </html>

@@ -1,80 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HPBD KA27</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
-            background-color: black;
         }
+
         canvas {
             display: block;
-            cursor: crosshair;
+            background-color: black;
         }
     </style>
 </head>
+
 <body>
     <canvas id="myCanvas"></canvas>
-    
+
     <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const speed = 0.02;
 
-        
-        class LightPoint {
-            constructor(a, b, angle) {
-                this.a = a, 
-                this.b = b, 
-                this.angle = angle
+        //global setting
+        ctx.fillStyle = 'white';
+        ctx.strokeStyle = 'white';
+
+        class Particle {
+            constructor(effect) {
+                this.effect = effect;
+                this.width = this.effect.width;
+                this.height = this.effect.height;
+                this.widthCake = 200;
+                this.heightCake = 250;
+                this.widthCandle = 50;
+                this.init();
+            }
+
+            init() {
+                this.radius = 10;
+                this.x = this.width / 2 - this.widthCake * (Math.random() * 2 - 1);
+                this.y = this.height / 2 + this.heightCake * Math.random();
+                this.vx = Math.random() * 2 - 1;
+                this.vy = Math.random() * 2 - 1;
+                this.inCandle = false;
+                this.angle = 0;
+                this.ra = 10;
+                this.upStep = 5;
+                this.color = '#f29872';
+            }
+
+            draw(ctx) {
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                gradient.addColorStop(0, this.color);
+                gradient.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
             }
 
             update() {
-                this.angle += speed;
-                if (this.angle >= Math.PI * 2) this.angle = 0; 
+                if (this.inCandle == true) {
+                    this.angle += 0.05;
+                    if (this.angle > Math.PI * 2) this.angle = 0;
+                    this.x = this.width / 2 + this.ra * Math.cos(this.angle);
+                    this.y = this.height / 2 - this.upStep + 3 * Math.sin(this.angle);
+                    this.upStep += 1;
+                } else {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // if in the candle area, let fly up
+                if (this.x < this.width / 2 + this.widthCandle && this.x > this.width / 2 - this.widthCandle && this.y <= this.height / 2 + 5) { 
+                    this.inCandle = true;
+                    this.ra = Math.abs(this.x - this.width / 2);
+                    this.color = 'yellow';
+                } 
+                else {
+                    if (this.x > this.width / 2 + this.widthCake || this.x < this.width / 2 - this.widthCake) this.vx *= -1;
+
+                    if (this.y > this.height / 2 + this.heightCake || this.y < this.height / 2) this.vy *= -1;
+
+                    this.inCandle = false;
+                }
+                }           
+
+                
+
+                if (this.y < 100) this.reset();
+
             }
 
-            draw() {
-                const x = centerX + this.a * Math.cos(this.angle);
-                const y = centerY + this.b * Math.sin(this.angle);
-                const radius = 5 * (2 + Math.sin(this.angle));
-
-                const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-                gradient.addColorStop(0, 'hsla(25, 100%, 70%, 1)');
-                gradient.addColorStop(1, 'hsla(25, 100%, 70%, 0)');
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(x, y, radius, 0, Math.PI * 2);
-                ctx.fill();
+            reset() {
+                this.init();
             }
         }
 
-        const point = new LightPoint(200, 50, 0);
+        class Effect {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.width = canvas.width;
+                this.height = canvas.height;
+                this.particles = [];
+                this.particleMaxCount = 500;
+                this.init();
+
+                window.addEventListener('resize', (e) => {
+                    this.resize(e.target.window.innerWidth, e.target.window.innerHeight);
+                })
+            }
+
+            init() {
+                for (let i = 0; i < this.particleMaxCount; i++) {
+                    this.particles.push(new Particle(this));
+                }
+            }
+
+            render(ctx) {
+                this.particles.forEach(p => {
+                    p.draw(ctx);
+                    p.update();
+                })
+            }
+
+            resize(width, height) {
+                this.canvas.width = width;
+                this.canvas.height = height;
+                this.width = width;
+                this.height = height;
+
+                this.particles = [];
+                this.init();
+            }
+            
+        }
+
+        const effect = new Effect(canvas);
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            point.update();
-            point.draw();
-
+            effect.render(ctx);
             requestAnimationFrame(animate);
         }
 
         animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        })
     </script>
 </body>
+
 </html>

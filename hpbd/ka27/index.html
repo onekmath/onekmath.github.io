@@ -32,27 +32,30 @@
         ctx.strokeStyle = 'white';
 
         class Particle {
-            constructor(effect) {
+            constructor(effect, ra, alpha) {
                 this.effect = effect;
+                this.ra = ra;
+                this.alpha = alpha;
+                
                 this.width = this.effect.width;
                 this.height = this.effect.height;
-                this.widthCake = 200;
-                this.heightCake = 250;
-                this.widthCandle = 50;
+                                
                 this.init();
             }
 
             init() {
                 this.radius = 10;
-                this.x = this.width / 2 - this.widthCake * (Math.random() * 2 - 1);
-                this.y = this.height / 2 + this.heightCake * Math.random();
-                this.vx = Math.random() * 2 - 1;
-                this.vy = Math.random() * 2 - 1;
-                this.inCandle = false;
-                this.angle = 0;
-                this.ra = 10;
-                this.upStep = 5;
-                this.color = '#f29872';
+                this.color = 'yellow';
+                this.alphaModifier = 0.03;
+            }          
+
+            update() {
+                this.x = this.width / 2 + this.ra * Math.cos(this.alpha);
+                this.y = this.height / 2 + 10 * Math.sin(this.alpha);
+                this.radius = 5 * Math.sin(this.alpha) + 10;
+                
+                this.alpha += this.alphaModifier;
+                if (this.alpha > Math.PI * 2) this.alpha = 0;
             }
 
             draw(ctx) {
@@ -63,38 +66,6 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fill();
-            }
-
-            update() {
-                if (this.inCandle == true) {
-                    this.angle += 0.05;
-                    if (this.angle > Math.PI * 2) this.angle = 0;
-                    this.x = this.width / 2 + this.ra * Math.cos(this.angle);
-                    this.y = this.height / 2 - this.upStep + 3 * Math.sin(this.angle);
-                    this.upStep += 1;
-                } else {
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    // if in the candle area, let fly up
-                if (this.x < this.width / 2 + this.widthCandle && this.x > this.width / 2 - this.widthCandle && this.y <= this.height / 2 + 5) { 
-                    this.inCandle = true;
-                    this.ra = Math.abs(this.x - this.width / 2);
-                    this.color = 'yellow';
-                } 
-                else {
-                    if (this.x > this.width / 2 + this.widthCake || this.x < this.width / 2 - this.widthCake) this.vx *= -1;
-
-                    if (this.y > this.height / 2 + this.heightCake || this.y < this.height / 2) this.vy *= -1;
-
-                    this.inCandle = false;
-                }
-                }           
-
-                
-
-                if (this.y < 100) this.reset();
-
             }
 
             reset() {
@@ -108,7 +79,7 @@
                 this.width = canvas.width;
                 this.height = canvas.height;
                 this.particles = [];
-                this.particleMaxCount = 500;
+                this.particleMaxCount = 5;
                 this.init();
 
                 window.addEventListener('resize', (e) => {
@@ -117,15 +88,15 @@
             }
 
             init() {
-                for (let i = 0; i < this.particleMaxCount; i++) {
-                    this.particles.push(new Particle(this));
+                for (let i = 0; i < 360; i++) {
+                    this.particles.push(new Particle(this, 100, i));
                 }
             }
 
             render(ctx) {
                 this.particles.forEach(p => {
-                    p.draw(ctx);
                     p.update();
+                    p.draw(ctx);         
                 })
             }
 

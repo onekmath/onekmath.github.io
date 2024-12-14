@@ -40,19 +40,20 @@
 
                 this.width = this.effect.width;
                 this.height = this.effect.height;
+                this.inLine = true;
+                this.rb = this.ra * 0.5;
 
                 this.init();
             }
 
             init() {
-                this.rb = 10
                 this.x = this.width + this.ra * this.alpha;
                 this.y = this.y0;
-                this.inLine = true;
-                this.radius = 10;
-                this.color = 'yellow';
+                this.radius = 1;
+                this.color = '#f7c76d';
                 this.alphaModifier = 0.01;
-                this.linearModifier = -15;
+                this.linearModifier = -10;
+                this.dotRadius = 10;
             }
 
             update() {
@@ -65,9 +66,9 @@
                 else {
                     this.x = this.width / 2 + this.ra * Math.cos(this.alpha);
                     this.y = this.y0 + this.rb * Math.sin(this.alpha);
-                    this.radius = 5 * Math.sin(this.alpha) + 10;
+                    this.radius = 2 * Math.sin(this.alpha) + 3;
 
-                    
+
                 }
 
                 this.alpha += this.alphaModifier;
@@ -76,12 +77,12 @@
             }
 
             draw(ctx) {
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-                gradient.addColorStop(0, this.color);
+                const gradient = ctx.createRadialGradient(this.x, this.y, this.radius, this.x, this.y, this.dotRadius);
+                gradient.addColorStop(0, `hsl(${this.ra},100%, 50%)`);
                 gradient.addColorStop(1, 'rgba(0,0,0,0)');
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, this.dotRadius, 0, Math.PI * 2);
                 ctx.fill();
             }
 
@@ -95,8 +96,11 @@
                 this.canvas = canvas;
                 this.width = canvas.width;
                 this.height = canvas.height;
+                this.cakeLevel = [];
+                this.maxLevel = 6;
                 this.particles = [];
                 this.particleMaxCount = 5;
+
                 this.init();
 
                 window.addEventListener('resize', (e) => {
@@ -105,16 +109,25 @@
             }
 
             init() {
-                let count = 0;
-                for (let r = 50; r < this.width / 2; r+=40) {
-                    for (let i = 0; i < 360; i += 13) {
+                let r = 50;
+                let y0 = this.height / 2;
+                for (let l = 1; l <= this.maxLevel; l++) {
+                    if (l % 2 == 1) {
+                        r += 50;
+                    } else {
+                        y0 += 60;
+                    }
+                    this.createCircle(r, y0);
+                }
+
+
+            }
+
+            createCircle(r, y0) {
+                for (let i = 0; i < 360; i += 18) {
                     const alpha = Math.PI * i / 180;
-                    console.log(count++);
-                    // console.log(alpha);
-                    this.particles.push(new Particle(this, r, alpha, this.height / 2 + r));
+                    this.particles.push(new Particle(this, r, alpha, y0));
                 }
-                }
-                
             }
 
             render(ctx) {

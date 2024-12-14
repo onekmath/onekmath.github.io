@@ -32,30 +32,47 @@
         ctx.strokeStyle = 'white';
 
         class Particle {
-            constructor(effect, ra, alpha) {
+            constructor(effect, ra, alpha, y0) {
                 this.effect = effect;
                 this.ra = ra;
                 this.alpha = alpha;
-                
+                this.y0 = y0
+
                 this.width = this.effect.width;
                 this.height = this.effect.height;
-                                
+
                 this.init();
             }
 
             init() {
+                this.rb = 10
+                this.x = this.width + this.ra * this.alpha;
+                this.y = this.y0;
+                this.inLine = true;
                 this.radius = 10;
                 this.color = 'yellow';
-                this.alphaModifier = 0.03;
-            }          
+                this.alphaModifier = 0.01;
+                this.linearModifier = -15;
+            }
 
             update() {
-                this.x = this.width / 2 + this.ra * Math.cos(this.alpha);
-                this.y = this.height / 2 + 10 * Math.sin(this.alpha);
-                this.radius = 5 * Math.sin(this.alpha) + 10;
-                
+                if (this.inLine == true) {
+                    this.x += this.linearModifier;
+                    if (this.x < this.width / 2 + this.ra) {
+                        this.inLine = false;
+                    }
+                }
+                else {
+                    this.x = this.width / 2 + this.ra * Math.cos(this.alpha);
+                    this.y = this.y0 + this.rb * Math.sin(this.alpha);
+                    this.radius = 5 * Math.sin(this.alpha) + 10;
+
+                    
+                }
+
                 this.alpha += this.alphaModifier;
                 if (this.alpha > Math.PI * 2) this.alpha = 0;
+
             }
 
             draw(ctx) {
@@ -88,15 +105,22 @@
             }
 
             init() {
-                for (let i = 0; i < 360; i++) {
-                    this.particles.push(new Particle(this, 100, i));
+                let count = 0;
+                for (let r = 50; r < this.width / 2; r+=40) {
+                    for (let i = 0; i < 360; i += 13) {
+                    const alpha = Math.PI * i / 180;
+                    console.log(count++);
+                    // console.log(alpha);
+                    this.particles.push(new Particle(this, r, alpha, this.height / 2 + r));
                 }
+                }
+                
             }
 
             render(ctx) {
                 this.particles.forEach(p => {
                     p.update();
-                    p.draw(ctx);         
+                    p.draw(ctx);
                 })
             }
 
@@ -109,7 +133,7 @@
                 this.particles = [];
                 this.init();
             }
-            
+
         }
 
         const effect = new Effect(canvas);

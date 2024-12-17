@@ -3,113 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas Candle Flame</title>
+  <title>Hiệu ứng giọt nước bắn</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #1e1e1e;
+      overflow: hidden;
+      height: 100vh;
+    }
     canvas {
       display: block;
-      margin: 0 auto;
-      background: black;
     }
   </style>
 </head>
 <body>
-  <canvas id="candleCanvas"></canvas>
+  <canvas id="splashCanvas"></canvas>
+  <script src="splash.js"></script>
+
   <script>
-    const canvas = document.getElementById("candleCanvas");
-    const ctx = canvas.getContext("2d");
+    const canvas = document.getElementById('splashCanvas');
+const ctx = canvas.getContext('2d');
 
-    // Kích thước canvas
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    const width = canvas.width;
-    const height = canvas.height;
+const drops = [];
 
-    // Lớp Particle (đốm lửa)
-    class Particle {
-      constructor(x, y, size, color) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.color = color;
-        this.speedY = Math.random() * -1 - 0.5; // Tốc độ bay lên
-        this.opacity = 1; // Độ trong suốt
-      }
+// Tạo giọt nước
+function createDrop(x, y) {
+  for (let i = 0; i < 10; i++) {
+    drops.push({
+      x: x,
+      y: y,
+      radius: Math.random() * 3 + 2, // kích thước hạt nước
+      speedX: (Math.random() - 0.5) * 4,
+      speedY: Math.random() * -6 - 3,
+      alpha: 1, // độ trong suốt
+    });
+  }
+}
 
-      update() {
-        this.y += this.speedY;
-        this.opacity -= 0.01; // Làm mờ dần
-        if (this.opacity < 0) this.opacity = 0;
-      }
+// Cập nhật hiệu ứng
+function updateDrops() {
+  for (let i = drops.length - 1; i >= 0; i--) {
+    const drop = drops[i];
+    drop.x += drop.speedX;
+    drop.y += drop.speedY;
+    drop.speedY += 0.3; // trọng lực
+    drop.alpha -= 0.02;
 
-      draw() {
-        ctx.beginPath();
-        const gradient = ctx.createRadialGradient(
-          this.x, this.y, 0,
-          this.x, this.y, this.size
-        );
-        gradient.addColorStop(0, `rgba(255, 200, 50, ${this.opacity})`); // Vàng sáng
-        gradient.addColorStop(0.5, `rgba(255, 100, 10, ${this.opacity})`); // Cam
-        gradient.addColorStop(1, `rgba(255, 0, 0, 0)`); // Đỏ nhạt
-        ctx.fillStyle = gradient;
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    if (drop.alpha <= 0) {
+      drops.splice(i, 1); // Xóa giọt nước khi mờ đi
     }
+  }
+}
 
-    // Danh sách particles
-    const particles = [];
+// Vẽ giọt nước
+function drawDrops() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (const drop of drops) {
+    ctx.beginPath();
+    ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0, 150, 255, ${drop.alpha})`;
+    ctx.fill();
+  }
+}
 
-    // Tạo particles mới
-    function createParticles() {
-      const x = width / 2; // Tâm ngọn nến
-      const y = height / 2 + 100; // Vị trí thấp hơn một chút
-      const size = Math.random() * 20 + 10; // Kích thước ngẫu nhiên
-      const color = "rgba(255, 150, 0, 1)";
-      particles.push(new Particle(x, y, size, color));
-    }
+// Lặp hiệu ứng
+function animate() {
+  updateDrops();
+  drawDrops();
+  requestAnimationFrame(animate);
+}
 
-    // Cập nhật và vẽ particles
-    function handleParticles() {
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+// Thêm hiệu ứng khi click
+canvas.addEventListener('click', (e) => {
+  createDrop(e.clientX, e.clientY);
+});
 
-        // Xóa particle khi đã mờ hoàn toàn
-        if (particles[i].opacity <= 0) {
-          particles.splice(i, 1);
-          i--;
-        }
-      }
-    }
+animate();
 
-    // Animation loop
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      // Vẽ phần ngọn lửa chính bằng gradient
-      const flameGradient = ctx.createRadialGradient(
-        width / 2, height / 2 + 100, 10,
-        width / 2, height / 2 - 50, 100
-      );
-      flameGradient.addColorStop(0, "rgba(255, 200, 50, 1)"); // Vàng sáng
-      flameGradient.addColorStop(0.5, "rgba(255, 100, 10, 0.8)"); // Cam
-      flameGradient.addColorStop(1, "rgba(255, 0, 0, 0)"); // Đỏ nhạt
-
-      ctx.beginPath();
-      ctx.arc(width / 2, height / 2, 100, 0, Math.PI * 2);
-      ctx.fillStyle = flameGradient;
-      ctx.fill();
-
-      // Tạo và xử lý particles (vệt khói)
-      createParticles();
-      handleParticles();
-
-      requestAnimationFrame(animate);
-    }
-
-    // Bắt đầu animation
-    animate();
   </script>
 </body>
 </html>

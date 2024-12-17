@@ -32,53 +32,65 @@
         ctx.strokeStyle = 'white';
 
         class Particle {
-            constructor(effect, ra, alpha, y0) {
+            constructor(effect, ra, y0, hue, yStart=0, alpha=0) {
                 this.effect = effect;
                 this.ra = ra;
+                this.hue = hue;
+                this.y0 = y0;
+                this.yStart = yStart
                 this.alpha = alpha;
-                this.y0 = y0
 
                 this.width = this.effect.width;
                 this.height = this.effect.height;
-                this.inLine = true;
-                this.rb = this.ra * 0.5;
 
                 this.init();
             }
 
             init() {
-                this.x = this.width + this.ra * this.alpha;
-                this.y = this.y0;
-                this.radius = 1;
-                this.color = '#f7c76d';
-                this.alphaModifier = 0.01;
-                this.linearModifier = -10;
-                this.dotRadius = 10;
+                this.x = this.width / 2;
+                this.y = this.yStart;
+                this.innerDotRadius = 1;
+                this.dropSpeed = 0.1;
+                this.dotRadius = 5;
+                this.isDropping = true;
+                this.status = 'fall';
+                this.rb = this.ra * 0.5;
+                this.alphaSpeed = 0.01;
+
+                this.drops = [];
+                this.splashX = (Math.random() - 0.5) * 4;
+                this.splashY =  Math.random() * -6 - 3;
             }
 
-            update() {
-                if (this.inLine == true) {
-                    this.x += this.linearModifier;
-                    if (this.x < this.width / 2 + this.ra) {
-                        this.inLine = false;
+            update(ctx) {
+                if (this.status == 'fall') {
+                    this.dropSpeed *= 1.07;
+                    this.y += this.dropSpeed;
+                    if (this.y >= this.y0) {
+                        this.status = 'splash';
+                        this.createDrop(this.width / 2, this.y0);
                     }
                 }
-                else {
+                else if (this.status == 'splash') {
+                    this.x += this.splashX;
+                    this.y += this.splashY;
+                    this.splashY += 0.3; // trọng lực
+                    if (this.y >= this.y0+100) {
+                        this.status = 'round';
+                    }
+                }
+                else if (this.status == 'round'){
                     this.x = this.width / 2 + this.ra * Math.cos(this.alpha);
                     this.y = this.y0 + this.rb * Math.sin(this.alpha);
-                    this.radius = 2 * Math.sin(this.alpha) + 3;
-
-
+                    this.alpha -= this.alphaSpeed;
+                    if (this.alpha <= -Math.PI * 2) this.alpha = 0;
+                    this.innerDotRadius = 2 * Math.sin(this.alpha) + 2;
                 }
-
-                this.alpha += this.alphaModifier;
-                if (this.alpha > Math.PI * 2) this.alpha = 0;
-
             }
 
             draw(ctx) {
-                const gradient = ctx.createRadialGradient(this.x, this.y, this.radius, this.x, this.y, this.dotRadius);
-                gradient.addColorStop(0, `hsl(${this.ra},100%, 50%)`);
+                const gradient = ctx.createRadialGradient(this.x, this.y, this.innerDotRadius, this.x, this.y, this.dotRadius);
+                gradient.addColorStop(0, `hsl(${this.hue},100%, 50%)`);
                 gradient.addColorStop(1, 'rgba(0,0,0,0)');
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
@@ -89,6 +101,43 @@
             reset() {
                 this.init();
             }
+
+            createDrop(x, y) {
+                for (let i = 0; i < 10; i++) {
+                    this.drops.push({
+                        x: x,
+                        y: y,
+                        radius: Math.random() * 3 + 2, // kích thước hạt nước
+                        speedX: (Math.random() - 0.5) * 4,
+                        speedY: Math.random() * -6 - 3,
+                        alpha: 1, // độ trong suốt
+                    });
+                }
+            }
+
+            updateDrops() {
+                for (let i = this.drops.length - 1; i >= 0; i--) {
+                    const drop = this.drops[i];
+                    drop.x += drop.speedX;
+                    drop.y += drop.speedY;
+                    drop.speedY += 0.3; // trọng lực
+                    drop.alpha -= 0.02;
+
+                    if (drop.alpha <= 0) {
+                        this.drops.splice(i, 1); // Xóa giọt nước khi mờ đi
+                    }
+                }
+            }
+
+            // Vẽ giọt nước
+            drawDrops(ctx) {
+                for (const drop of this.drops) {
+                    ctx.beginPath();
+                    ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${drop.alpha})`;
+                    ctx.fill();
+                }
+            }
         }
 
         class Effect {
@@ -96,10 +145,8 @@
                 this.canvas = canvas;
                 this.width = canvas.width;
                 this.height = canvas.height;
-                this.cakeLevel = [];
-                this.maxLevel = 6;
+
                 this.particles = [];
-                this.particleMaxCount = 5;
 
                 this.init();
 
@@ -108,31 +155,20 @@
                 })
             }
 
-            init() {
-                let r = 50;
-                let y0 = this.height / 2;
-                for (let l = 1; l <= this.maxLevel; l++) {
-                    if (l % 2 == 1) {
-                        r += 50;
-                    } else {
-                        y0 += 60;
-                    }
-                    this.createCircle(r, y0);
+            createDisk() {
+                for (let i = 0; i< 360; i+=30) {
+                    const alpha = i * Math.PI / 180;
+                    this.particles.push(new Particle(this, 50, 600, 30, 10, alpha));
                 }
-
-
             }
 
-            createCircle(r, y0) {
-                for (let i = 0; i < 360; i += 18) {
-                    const alpha = Math.PI * i / 180;
-                    this.particles.push(new Particle(this, r, alpha, y0));
-                }
+            init() {
+                this.createDisk();
             }
 
             render(ctx) {
                 this.particles.forEach(p => {
-                    p.update();
+                    p.update(ctx);
                     p.draw(ctx);
                 })
             }

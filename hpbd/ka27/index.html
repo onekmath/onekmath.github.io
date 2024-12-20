@@ -155,15 +155,19 @@
                 })
             }
 
-            createDisk() {
+            createDisk(ra, y0, hue, yStart) {
                 for (let i = 0; i< 360; i+=30) {
                     const alpha = i * Math.PI / 180;
-                    this.particles.push(new Particle(this, 50, 600, 30, 10, alpha));
+                    this.particles.push(new Particle(this, ra, y0, hue, yStart, alpha));
                 }
             }
 
             init() {
-                this.createDisk();
+                for (let dy0 = 10; dy0 <= 100; dy0 += 10) {
+                    for (let ra = 10; ra <150; ra+=10) {
+                        this.createDisk(ra, 600-dy0, ra, -ra*6*dy0);
+                    }
+                }
             }
 
             render(ctx) {

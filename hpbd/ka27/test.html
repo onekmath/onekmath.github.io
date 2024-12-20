@@ -3,90 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hiệu ứng giọt nước bắn</title>
+  <title>Hiệu Ứng Chữ Lấp Lánh</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      background-color: #1e1e1e;
-      overflow: hidden;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
+      background: black;
+      overflow: hidden;
     }
-    canvas {
-      display: block;
+
+    .sparkle-text {
+      position: relative;
+      font-size: 64px;
+      font-weight: bold;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 20px #f0f, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+      }
+      100% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #00ffff, 0 0 50px #00ffff;
+      }
+    }
+
+    .sparkle-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, #fff, transparent);
+      border-radius: 50%;
+      animation: sparkle-move 1.5s linear infinite;
+    }
+
+    @keyframes sparkle-move {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <canvas id="splashCanvas"></canvas>
-  <script src="splash.js"></script>
+  <div class="sparkle-text" id="sparkle-text">Lấp Lánh</div>
+  <div class="sparkle-effect" id="sparkle-effect"></div>
 
   <script>
-    const canvas = document.getElementById('splashCanvas');
-const ctx = canvas.getContext('2d');
+    const sparkleContainer = document.getElementById('sparkle-effect');
+    const textElement = document.getElementById('sparkle-text');
+    const textRect = textElement.getBoundingClientRect();
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      const x = Math.random() * textRect.width + textRect.left;
+      const y = Math.random() * textRect.height + textRect.top;
 
-const drops = [];
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+      sparkle.style.animationDuration = `${Math.random() * 1.5 + 0.5}s`;
 
-// Tạo giọt nước
-function createDrop(x, y) {
-  for (let i = 0; i < 10; i++) {
-    drops.push({
-      x: x,
-      y: y,
-      radius: Math.random() * 3 + 2, // kích thước hạt nước
-      speedX: (Math.random() - 0.5) * 4,
-      speedY: Math.random() * -6 - 3,
-      alpha: 1, // độ trong suốt
-    });
-  }
-}
+      sparkleContainer.appendChild(sparkle);
 
-// Cập nhật hiệu ứng
-function updateDrops() {
-  for (let i = drops.length - 1; i >= 0; i--) {
-    const drop = drops[i];
-    drop.x += drop.speedX;
-    drop.y += drop.speedY;
-    drop.speedY += 0.3; // trọng lực
-    drop.alpha -= 0.02;
-
-    if (drop.alpha <= 0) {
-      drops.splice(i, 1); // Xóa giọt nước khi mờ đi
+      setTimeout(() => {
+        sparkle.remove();
+      }, 2000);
     }
-  }
-}
 
-// Vẽ giọt nước
-function drawDrops() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (const drop of drops) {
-    ctx.beginPath();
-    ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(0, 150, 255, ${drop.alpha})`;
-    ctx.fill();
-  }
-}
-
-// Lặp hiệu ứng
-function animate() {
-  updateDrops();
-  drawDrops();
-  requestAnimationFrame(animate);
-}
-
-// Thêm hiệu ứng khi click
-canvas.addEventListener('click', (e) => {
-  createDrop(e.clientX, e.clientY);
-});
-
-animate();
-
+    setInterval(createSparkle, 100);
   </script>
 </body>
 </html>

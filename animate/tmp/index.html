@@ -1,119 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrollable Timeline</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .timeline-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 400px; /* Fixed height to create scrollable area */
-            overflow-y: scroll; /* Enable vertical scrolling */
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .timeline {
-            position: relative;
-        }
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: #333;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-        .container {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-            margin-bottom: 20px;
-        }
-        .container.left {
-            left: 0;
-        }
-        .container.right {
-            left: 50%;
-        }
-        .container::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -17px;
-            background-color: white;
-            border: 4px solid #333;
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .right::after {
-            left: -17px;
-        }
-        .content {
-            padding: 20px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Pulse Animation</title>
+  <style>
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background-color: #000;
+    }
+  </style>
 </head>
 <body>
+  <canvas id="heartCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById("heartCanvas");
+    const ctx = canvas.getContext("2d");
 
-<div class="timeline-container">
-    <div class="timeline">
-        <div class="container left">
-            <div class="content">
-                <h2>January 2021</h2>
-                <p>Started learning HTML and CSS basics.</p>
-            </div>
-        </div>
-        <div class="container right">
-            <div class="content">
-                <h2>March 2021</h2>
-                <p>Built first basic webpage.</p>
-            </div>
-        </div>
-        <div class="container left">
-            <div class="content">
-                <h2>June 2021</h2>
-                <p>Explored JavaScript and added interactivity to the webpage.</p>
-            </div>
-        </div>
-        <div class="container right">
-            <div class="content">
-                <h2>December 2021</h2>
-                <p>Created first portfolio website.</p>
-            </div>
-        </div>
-        <!-- Add more timeline events as needed -->
-        <div class="container left">
-            <div class="content">
-                <h2>January 2022</h2>
-                <p>Started learning responsive design.</p>
-            </div>
-        </div>
-        <div class="container right">
-            <div class="content">
-                <h2>March 2022</h2>
-                <p>Completed first client project.</p>
-            </div>
-        </div>
-    </div>
-</div>
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
+    const width = canvas.width;
+    const height = canvas.height;
+
+    const particles = [];
+    const heartScale = 10;
+
+    function heartEquation(t) {
+      const x = 16 * Math.sin(t) ** 3;
+      const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+      return { x, y };
+    }
+
+    function createParticle() {
+      const angle = Math.random() * Math.PI * 2;
+      const t = Math.random() * Math.PI * 2;
+      const { x, y } = heartEquation(t);
+
+      particles.push({
+        x: width / 2 + x * heartScale,
+        y: height / 2 + y * heartScale,
+        size: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 2,
+        dy: (Math.random() - 0.5) * 2,
+        alpha: 1,
+        life: Math.random() * 100 + 50
+      });
+    }
+
+    function drawHeart(x, y, size, alpha) {
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 0, 0, ${alpha})`;
+      ctx.fill();
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach((particle, index) => {
+        particle.x += particle.dx;
+        particle.y += particle.dy;
+        particle.alpha -= 0.01;
+        particle.size += Math.sin(Date.now() / 500) * 0.1;
+        particle.life--;
+
+        if (particle.life <= 0 || particle.alpha <= 0) {
+          particles.splice(index, 1);
+        } else {
+          drawHeart(particle.x, particle.y, particle.size, particle.alpha);
+        }
+      });
+
+      if (particles.length < 200) {
+        createParticle();
+      }
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    function heartPulse() {
+      const time = Date.now() / 1000;
+      const scale = 1 + Math.sin(time * 2) * 0.1;
+
+      particles.forEach(particle => {
+        const t = Math.random() * Math.PI * 2;
+        const { x, y } = heartEquation(t);
+        particle.x = width / 2 + x * heartScale * scale;
+        particle.y = height / 2 + y * heartScale * scale;
+      });
+
+      setTimeout(heartPulse, 50);
+    }
+
+    heartPulse();
+    animateParticles();
+  </script>
 </body>
 </html>

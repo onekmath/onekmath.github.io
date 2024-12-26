@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Particle Effect</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Set canvas size to fill the window
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+     // List of pink colors
+     const pinkColors = [
+      "#FF69B4", // Hot pink
+      "#FF1493", // Deep pink
+      "#DB7093", // Pale violet red
+      "#C71585", // Medium violet red
+      "#FFB6C1", // Light pink
+      "#FF80BF", // Pinkish
+      "#DDA0DD", // Plum (slightly purplish pink)
+    ];
+    const a = 15; // Giá trị bắt đầu
+    const b = 18; // Giá trị kết thúc
+    const T = 900; // Thời gian để đạt b (ms)
+    const totalDuration = 2 * T; // Tổng thời gian (ms)
+    const alpha = 5; // Hệ số điều chỉnh tốc độ tăng/giảm
+
+    // Function to get a random pink color from the list
+    function getRandomPinkColor() {
+      const randomIndex = Math.floor(Math.random() * pinkColors.length);
+      return pinkColors[randomIndex];
+    }
+
+    // Hàm sin tính giá trị scale theo thời gian t
+    function getX(t) {
+      if (t <= T) {
+        // Tăng nhanh dần từ a đến b
+        return a + (b - a) * Math.sin((Math.PI / 2) * (t / T)) ** 2;
+      } else {
+        // Giảm chậm dần từ b về a
+        const tReduced = t - T;
+        return b - (b - a) * Math.sin((Math.PI / 2) * (tReduced / T)) ** 2;
+      }
+    }
+
+        // Hàm mũ tính giá trị scale theo thời gian t
+    function getX2(t) {
+      if (t <= T) {
+        // Tăng nhanh dần từ a đến b
+        return a + (b - a) * (1 - Math.exp(-alpha * (t / T)));
+      } else {
+        // Giảm chậm dần từ b về a
+        const tReduced = t - T;
+        return b - (b - a) * (1 - Math.exp(-alpha * (tReduced / T)));
+      }
+    }
+
+    // Particle class
+    class Particle {
+      constructor(angle, color) {
+        this.angle = angle;
+        this.color = '#fadcec';
+        
+        this.size = 1;
+        this.startTime = performance.now();
+      }
+
+      // Update particle position and opacity
+      update() {
+        const currentTime = performance.now();
+        const elapsed = currentTime - this.startTime;
+
+        this.scale = getX2(elapsed);
+        if (elapsed >= 2 * T) {
+          this.startTime = performance.now();
+        }
+      }
+
+      // Draw the particle
+      draw() {
+        const { x, y } = heartEquation(this.angle);
+        this.x = centerX + x * this.scale;
+        this.y = centerY - y * this.scale;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        this.randomPoint(10);
+      }
+
+      randomPoint(numPoint) {
+        for (let i = 0; i< numPoint; i++) {
+          const x = this.x + Math.random() * 20;
+          const y = this.y + Math.random() * 20;
+          ctx.fillStyle = getRandomPinkColor();
+          ctx.beginPath();
+          ctx.arc(x, y, 1, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    // Function to calculate x(t) and y(t)
+    function heartEquation(t) {
+      const x = 16 * Math.pow(Math.sin(t), 3);
+      const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+      return { x, y };
+    }
+
+    // Function to create a new particle
+    function createParticle() {
+      for (let angle = 0; angle <= Math.PI * 2; angle += 0.02) {
+        const { x, y } = heartEquation(angle);
+        
+        const color = getRandomPinkColor();
+        particles.push(new Particle(angle, color));
+      }
+    }
+
+    createParticle();
+
+    // Animation loop
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((particle, index) => {
+        particle.update();
+        particle.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+  </script>
+</body>
+</html>
